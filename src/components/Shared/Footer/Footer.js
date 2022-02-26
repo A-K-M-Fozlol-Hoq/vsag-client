@@ -6,24 +6,28 @@ import {
   AiFillInstagram,
   AiFillGoogleCircle,
 } from 'react-icons/ai';
-const Footer = () => {
+const Footer = (props) => {
+  const { showLetsStayInTouch } = props;
   return (
     <div className="footer-wrapper">
-      <div className="get_email">
-        <div
-          className="container get_email-bg d-flex justify-content-center align-items-center"
-          id="subscribe"
-        >
-          <div>
-            <h3>LET'S STAY IN TOUCH</h3>
-            <h6>Get updates on sales, specials and more</h6>
-            <div className="footer-button">
-              <input type="email" placeholder="Enter your email" />
+      {showLetsStayInTouch && (
+        <div className="get_email">
+          <div
+            className="container get_email-bg d-flex justify-content-center align-items-center"
+            id="subscribe"
+          >
+            <div>
+              <h3>LET'S STAY IN TOUCH</h3>
+              <h6>Get updates on sales, specials and more</h6>
+              <div className="footer-button">
+                <input type="email" placeholder="Enter your email" />
+              </div>
+              <button className="btn btn-danger">SUBMIT</button>
             </div>
-            <button className="btn btn-danger">SUBMIT</button>
           </div>
         </div>
-      </div>{' '}
+      )}
+
       <footer
         className="text-center text-lg-start text-white"
         style={{ backgroundColor: '#6EAD40' }}

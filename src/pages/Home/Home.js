@@ -27,7 +27,7 @@ const Home = () => {
       <Services></Services>
       <ConsultingServices></ConsultingServices>
       <OurClients></OurClients>
-      <Footer></Footer>
+      <Footer showLetsStayInTouch={true}></Footer>
     </div>
   );
 };

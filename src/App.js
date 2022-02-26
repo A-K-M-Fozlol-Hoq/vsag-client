@@ -1,8 +1,8 @@
 import './App.css';
 import Home from './pages/Home/Home';
-import About from './pages/About/About';
-import Calculator from './pages/Calculator/Calculator';
-import ContactUs from './pages/ContactUs/ContactUs';
+import AboutPage from './pages/AboutPage/AboutPage';
+import CalculatorPage from './pages/CalculatorPage/CalculatorPage';
+import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 function App() {
   return (
@@ -17,13 +17,13 @@ function App() {
               <Home></Home>
             </Route>
             <Route path="/about">
-              <About></About>
+              <AboutPage></AboutPage>
             </Route>
             <Route path="/calculator">
-              <Calculator></Calculator>
+              <CalculatorPage></CalculatorPage>
             </Route>
             <Route path="/contact-us">
-              <ContactUs></ContactUs>
+              <ContactUsPage></ContactUsPage>
             </Route>
           </Switch>
         </div>

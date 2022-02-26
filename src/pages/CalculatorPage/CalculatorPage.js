@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../../components/Shared/NavBar/NavBar';
 
-const About = () => {
+const CalculatorPage = () => {
   return (
     <div>
       <NavBar></NavBar>
@@ -9,4 +9,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default CalculatorPage;
