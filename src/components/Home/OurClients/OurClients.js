@@ -21,7 +21,7 @@ const OurClients = () => {
           }}
         ></div>
         <div
-          id="carouselExampleControls"
+          id="carouselExampleControls2"
           className="carousel slide "
           data-ride="carousel"
         >
@@ -59,7 +59,7 @@ const OurClients = () => {
           </div>
           <a
             className="carousel-control-prev"
-            href="#carouselExampleControls"
+            href="#carouselExampleControls2"
             role="button"
             data-slide="prev"
           >
@@ -71,7 +71,7 @@ const OurClients = () => {
           </a>
           <a
             className="carousel-control-next"
-            href="#carouselExampleControls"
+            href="#carouselExampleControls2"
             role="button"
             data-slide="next"
           >
