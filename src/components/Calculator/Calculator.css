@@ -1,9 +1,25 @@
 .calculator-wrapper {
   padding: 50px;
 }
-.calculator-wrapper .single-option {
-  float: left;
-}
 .calculator-wrapper .single-option select {
-  width: 100px;
+  margin-top: 5px;
+  /* width: 50%; */
+}
+.calculator-wrapper .single-option {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.calculator-wrapper .single-option span {
+  margin-top: 10px;
+}
+.calculator-wrapper .all-options {
+  width: 500px;
+  margin: 0 auto 0;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 50px; */
+}
+.calculator-wrapper .selected-image {
+  width: 30%;
+  margin: -30px 35% 0;
 }

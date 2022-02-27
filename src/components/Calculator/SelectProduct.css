@@ -35,6 +35,7 @@
 }
 .select-product-wrapper .card:hover .product-name {
   color: #286a2d;
+  font-size: 20px;
 }
 .select-product-wrapper .btn-select {
   position: absolute;
