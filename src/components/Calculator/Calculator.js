@@ -2,6 +2,7 @@ import React from 'react';
 import './Calculator.css';
 import SelectProduct from './SelectProduct';
 import one from './images/start.jpg';
+import CalculatorModal from './CalculatorModal';
 const Calculator = () => {
   return (
     <div className="calculator-wrapper">
@@ -25,9 +26,6 @@ const Calculator = () => {
             worth now?
           </p>
           <hr />
-          {/* material -> wood, plastic, flass, metal, steel, plywood, 
-color -> black, brows, white
-shade type -> Roller Shades,Solar Shades, Cellular Shades, Vertical Cellular Shades */}
           <div className="all-options">
             <div className="single-option">
               <span>Select your preferred material</span>{' '}
@@ -57,10 +55,13 @@ shade type -> Roller Shades,Solar Shades, Cellular Shades, Vertical Cellular Sha
             <button
               className="btn btn-primary search-button"
               style={{ height: '50px', width: '150px' }}
+              data-toggle="modal"
+              data-target="#exampleModal"
             >
-              Search
+              Next
             </button>
           </div>
+          <CalculatorModal></CalculatorModal>
         </>
       )}
     </div>
