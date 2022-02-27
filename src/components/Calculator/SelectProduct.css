@@ -1,25 +1,6 @@
 .select-product-wrapper {
   padding-bottom: 50px;
-  /* width: 850px; */
-  /* height: 500px; */
-  /* overflow-x: hidden;
-  overflow-y: scroll;
-  margin: 0 auto 0;
-  border: 2px solid #286a2d;
-  border-radius: 10px;
-  padding: 10px; */
 }
-/* .select-product-wrapper img {
-  border: 2px solid #6ead40;
-  border-radius: 10px;
-  height: 100%;
-  width: 46%;
-  margin: 2%;
-}
-.select-product-wrapper img:hover {
-  border: 2px solid red;
-  cursor: pointer;
-} */
 .select-product-wrapper .card {
   border: none;
   box-shadow: 5px 5px 10px lightgray;

@@ -55,7 +55,7 @@ shade type -> Roller Shades,Solar Shades, Cellular Shades, Vertical Cellular Sha
               </select>
             </div>
             <button
-              className="btn btn-primary"
+              className="btn btn-primary search-button"
               style={{ height: '50px', width: '150px' }}
             >
               Search
