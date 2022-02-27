@@ -1,0 +1,9 @@
+.calculator-wrapper {
+  padding: 50px;
+}
+.calculator-wrapper .single-option {
+  float: left;
+}
+.calculator-wrapper .single-option select {
+  width: 100px;
+}
