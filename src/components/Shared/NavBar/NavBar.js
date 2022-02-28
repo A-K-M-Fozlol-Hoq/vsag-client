@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from './logo.png';
 import './NavBar.css';
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <div className="nav-wrapper">
       <nav
@@ -50,6 +50,11 @@ const NavBar = () => {
                   CONTACT US
                 </Link>
               </li>
+              {props.showLoginLogout && (
+                <li className="nav-item">
+                  <button className="btn btn-primary">Login</button>
+                </li>
+              )}
             </ul>
           </div>
         </div>

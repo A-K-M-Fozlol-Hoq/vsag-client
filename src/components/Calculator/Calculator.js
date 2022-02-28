@@ -29,7 +29,10 @@ const Calculator = () => {
           <div className="all-options">
             <div className="single-option">
               <span>Select your preferred material</span>{' '}
-              <select class="form-select" aria-label="Default select example">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+              >
                 <option value="wood">wood</option>
                 <option value="plastic">plastic</option>
                 <option value="glass">glass</option>
@@ -38,7 +41,10 @@ const Calculator = () => {
             </div>
             <div className="single-option">
               <span>Select your preferred color</span>{' '}
-              <select class="form-select" aria-label="Default select example">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+              >
                 <option value="black">black</option>
                 <option value="brows">brows</option>
                 <option value="white">white</option>
@@ -46,7 +52,10 @@ const Calculator = () => {
             </div>
             <div className="single-option">
               <span>Select your preferred shade type</span>{' '}
-              <select class="form-select" aria-label="Default select example">
+              <select
+                className="form-select"
+                aria-label="Default select example"
+              >
                 <option value="roller">Roller Shades</option>
                 <option value="solar">Solar Shades</option>
                 <option value="cellular">Cellular Shades</option>

@@ -4,6 +4,7 @@ import AboutPage from './pages/AboutPage/AboutPage';
 import CalculatorPage from './pages/CalculatorPage/CalculatorPage';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import AdminPage from './pages/AdminPage/AdminPage';
 function App() {
   return (
     <div className="App">
@@ -24,6 +25,9 @@ function App() {
             </Route>
             <Route path="/contact-us">
               <ContactUsPage></ContactUsPage>
+            </Route>
+            <Route path="/admin-page">
+              <AdminPage></AdminPage>
             </Route>
           </Switch>
         </div>

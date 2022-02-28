@@ -5,7 +5,7 @@ const CalculatorModal = () => {
     <div
       className="modal fade"
       id="exampleModal"
-      tabindex="-1"
+      tabIndex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -25,7 +25,15 @@ const CalculatorModal = () => {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div className="modal-body">...</div>
+          <div className="modal-body">
+            <input
+              className="form-control"
+              type="text"
+              name=""
+              placeholder="Enter Email or Phone Number"
+              id=""
+            />
+          </div>
           <div className="modal-footer">
             <button
               type="button"

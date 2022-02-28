@@ -1,0 +1,13 @@
+.client-wrapper .images {
+  height: 200px;
+  width: 70%;
+  margin-left: 15%;
+}
+.client-wrapper .images img {
+  padding-left: 20px;
+  height: 160px;
+  border: 1px solid green;
+}
+.client-wrapper .images img:hover {
+  border: 1px solid red;
+}
