@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import './Client.css';
 const Clients = () => {
   const [file, setFile] = useState('');
+  const [logos, setLogos] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:4000/client/getAll', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setLogos(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
   const handleSubmit = () => {
-    // console.log(file, typeof file, file.data);
-    // const encImg = file.toString('base64');
-
-    // var img = {
-    //   contentType: file.mimetype,
-    //   size: file.size,
-    //   // img: Buffer.from(encImg, 'base64'),
-    // };
-
-    // const clientInfo = {
-    //   img,
-    // };
-    // console.log(clientInfo);
-
     const formData = new FormData();
     formData.append('image', file);
-    // formData.append('i', 'file');
     fetch('http://localhost:4000/client/add', {
       method: 'POST',
       body: formData,
@@ -35,12 +35,37 @@ const Clients = () => {
         console.error(error);
       });
   };
+  const handleClick = (logo) => {
+    console.log(logo);
+  };
   return (
     <div className="client-wrapper">
+      <h2 className="text-center mt-3">Added clients</h2>
+      <div
+        style={{
+          backgroundColor: '#6EAD40',
+          height: '5px',
+          width: '150px',
+          borderRadius: '5px',
+          margin: '0 auto 50px',
+        }}
+      ></div>
       <div className="all-logos">
-        <div className="single-logo"></div>
+        {logos.map((logo) => (
+          <div className="single-logo" key={logo._id}>
+            <img src={`data:image/png;base64,${logo.image.img}`} alt="icon" />
+            <div
+              onClick={() => {
+                handleClick(logo);
+              }}
+              className="delete-icon"
+            >
+              <AiFillDelete />
+            </div>
+          </div>
+        ))}
       </div>
-      <div style={{ width: '210px', margin: '0 auto 0' }}>
+      <div style={{ width: '210px', margin: '20px auto 0' }}>
         Enter a new client: <br />
         <input
           onChange={(e) => setFile(e.target.files[0])}
@@ -49,7 +74,7 @@ const Clients = () => {
           id=""
         />
         <div className="btn btn-primary mt-2" onClick={handleSubmit}>
-          Submit
+          Add Client
         </div>
       </div>
     </div>
