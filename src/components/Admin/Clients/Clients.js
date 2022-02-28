@@ -4,7 +4,7 @@ import './Client.css';
 const Clients = () => {
   const [file, setFile] = useState('');
   const [logos, setLogos] = useState([]);
-  useEffect(() => {
+  const updateLogosState = () => {
     fetch('http://localhost:4000/client/getAll', {
       method: 'GET',
     })
@@ -16,6 +16,9 @@ const Clients = () => {
       .catch((error) => {
         console.error(error);
       });
+  };
+  useEffect(() => {
+    updateLogosState();
   }, []);
   const handleSubmit = () => {
     const formData = new FormData();
@@ -29,6 +32,7 @@ const Clients = () => {
         console.log(data);
         if (data._id) {
           alert('Client created successfully');
+          updateLogosState();
         }
       })
       .catch((error) => {
@@ -36,7 +40,21 @@ const Clients = () => {
       });
   };
   const handleClick = (logo) => {
-    console.log(logo);
+    fetch(`http://localhost:4000/client/deleteById/${logo._id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message === 'User was removed successfully!') {
+          alert('Client removed successfully');
+          updateLogosState();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Failed to remove client! Please try again');
+        window.location.reload();
+      });
   };
   return (
     <div className="client-wrapper">
