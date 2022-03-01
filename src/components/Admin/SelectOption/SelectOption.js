@@ -1,13 +1,38 @@
 import React from 'react';
 import './SelectOption.css';
-const SelectOption = () => {
+const SelectOption = (props) => {
+  const { setShowCompo } = props;
   return (
     <div className="select-option-wrapper">
       <div className="select-menu">
-        <p>Slider</p>
-        <p>Services</p>
-        <p>Clients</p>
-        <p>Products</p>
+        <p
+          onClick={() => {
+            setShowCompo('slider');
+          }}
+        >
+          Slider
+        </p>
+        <p
+          onClick={() => {
+            setShowCompo('services');
+          }}
+        >
+          Services
+        </p>
+        <p
+          onClick={() => {
+            setShowCompo('clients');
+          }}
+        >
+          Clients
+        </p>
+        <p
+          onClick={() => {
+            setShowCompo('products');
+          }}
+        >
+          Products
+        </p>
       </div>
     </div>
   );

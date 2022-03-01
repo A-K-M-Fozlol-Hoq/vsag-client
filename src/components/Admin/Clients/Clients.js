@@ -84,7 +84,17 @@ const Clients = () => {
         ))}
       </div>
       <div style={{ width: '210px', margin: '20px auto 0' }}>
-        Enter a new client: <br />
+        {/* Enter a new client: <br /> */}
+        <h4 className="text-center mt-5">Enter a new client</h4>
+        <div
+          style={{
+            backgroundColor: '#6EAD40',
+            height: '5px',
+            width: '150px',
+            borderRadius: '5px',
+            margin: '0 auto 20px',
+          }}
+        ></div>
         <input
           onChange={(e) => setFile(e.target.files[0])}
           type="file"

@@ -1,12 +1,32 @@
-import React from 'react';
-import one from './images/one.png';
-import two from './images/two.png';
-import three from './images/three.png';
-import four from './images/four.png';
-import five from './images/five.png';
-import six from './images/six.png';
+import React, { useEffect, useState } from 'react';
 import './OurClients.css';
+
 const OurClients = () => {
+  const [logos, setLogos] = useState([]);
+  let loopIndex = 0;
+  const [fakeArray, setFakeArray] = useState([]);
+  const updateLogosState = () => {
+    fetch('http://localhost:4000/client/getAll', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+
+        setLogos(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  // Array.from(new Array(20), (x, i) => i);​​​​​​
+  useEffect(() => {
+    updateLogosState();
+  }, []);
+  const updateLoopIndex = () => {
+    loopIndex++;
+  };
   return (
     <div className="our-clients-wrapper">
       <div className="container">
@@ -26,7 +46,53 @@ const OurClients = () => {
           data-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active">
+            {Array.from(new Array(Math.ceil(logos.length / 2)), (x, i) => (
+              <div
+                key={i}
+                className={`carousel-item ${loopIndex === 0 ? 'active' : ''}`}
+              >
+                <div className="row align-items-center">
+                  <div className="col-md-6">
+                    <img
+                      src={`data:image/png;base64,${logos[loopIndex]?.image.img}`}
+                      alt="icon"
+                      className="d-block w-100"
+                    />
+                    {updateLoopIndex()}
+                  </div>
+                  {logos[loopIndex]?.image.img && (
+                    <div className="col-md-6">
+                      <img
+                        src={`data:image/png;base64,${logos[loopIndex]?.image.img}`}
+                        alt="icon"
+                        className="d-block w-100"
+                      />
+                      {updateLoopIndex()}
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+
+            {/* {fakeArray.map((array, i) => (
+              <div
+                key={i}
+                className={`carousel-item ${loopIndex === 1 ? 'active' : ''}`}
+              >
+                <div className="row align-items-center">
+                  <div className="col-md-6">
+                    <img src={one} className="d-block w-100" alt="..." />
+                    {(loopIndex += 1)}
+                  </div>
+                  <div className="col-md-6">
+                    <img src={two} className="d-block w-100" alt="..." />
+                    {(loopIndex += 1)}
+                  </div>
+                </div>
+              </div>
+            ))} */}
+
+            {/* <div className="carousel-item active">
               <div className="row align-items-center">
                 <div className="col-md-6">
                   <img src={one} className="d-block w-100" alt="..." />
@@ -55,7 +121,7 @@ const OurClients = () => {
                   <img src={six} className="d-block w-100" alt="..." />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           <a
             className="carousel-control-prev"
