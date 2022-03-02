@@ -6,7 +6,7 @@ const Products = () => {
   const [name, setName] = useState('');
   const [products, setProducts] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/client/getAll', {
+    fetch('http://localhost:4000/product/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -22,32 +22,38 @@ const Products = () => {
     updateLogosState();
   }, []);
   const handleSubmit = () => {
-    const formData = new FormData();
-    formData.append('image', file);
-    fetch('http://localhost:4000/client/add', {
-      method: 'POST',
-      body: formData,
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data._id) {
-          alert('Client created successfully');
-          updateLogosState();
-        }
+    if (name && file) {
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('name', name);
+      fetch('http://localhost:4000/product/add', {
+        method: 'POST',
+        body: formData,
       })
-      .catch((error) => {
-        console.error(error);
-      });
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data._id) {
+            alert('Product created successfully');
+            updateLogosState();
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      alert('Please enter a product name and input file');
+    }
   };
   const handleClick = (product) => {
-    fetch(`http://localhost:4000/client/deleteById/${product._id}`, {
+    fetch(`http://localhost:4000/product/deleteById/${product._id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.message === 'User was removed successfully!') {
-          alert('Client removed successfully');
+        console.log(data);
+        if (data.message === 'Product was removed successfully!') {
+          alert('Product removed successfully');
           updateLogosState();
         }
       })
@@ -107,6 +113,7 @@ const Products = () => {
           className="form-control"
         />
         <input
+          onChange={(e) => setName(e.target.value)}
           type="text"
           name=""
           className="form-control mt-2 mb-2"

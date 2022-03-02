@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Calculator.css';
 import SelectProduct from './SelectProduct';
-import one from './images/start.jpg';
+import { IoArrowBackCircleSharp } from 'react-icons/io5';
 import CalculatorModal from './CalculatorModal';
 const Calculator = () => {
+  const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [showCompo, setShowCompo] = useState('products');
+  const updateProductsState = () => {
+    fetch('http://localhost:4000/product/getAll', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setProducts(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  useEffect(() => {
+    updateProductsState();
+  }, []);
   return (
     <div className="calculator-wrapper">
       <h1 className="text-center">Price Calculator</h1>
@@ -16,11 +35,29 @@ const Calculator = () => {
           margin: '10px auto 20px',
         }}
       ></div>
-      {false ? (
-        <SelectProduct></SelectProduct>
+      {showCompo === 'products' ? (
+        <SelectProduct
+          setShowCompo={setShowCompo}
+          products={products}
+          setSelectedProduct={setSelectedProduct}
+        ></SelectProduct>
       ) : (
         <>
-          <img className="selected-image" src={one} alt="" />
+          <div
+            className="btn btn-primary text-center "
+            style={{ width: '150px' }}
+            onClick={() => setShowCompo('products')}
+          >
+            <IoArrowBackCircleSharp
+              style={{ fontSize: '20px', margin: '-3px 5px 0 0' }}
+            />
+            Back
+          </div>
+          <img
+            className="selected-image"
+            src={`data:image/png;base64,${selectedProduct.image.img}`}
+            alt=""
+          />
           <p className="text-center">
             You know how much it was worth when you bought it. How much is it
             worth now?
