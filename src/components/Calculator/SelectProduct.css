@@ -32,3 +32,17 @@
   width: 100%;
   padding: 0 50px;
 }
+.select-product-wrapper .card-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+@media screen and (max-width: 900px) {
+  .select-product-wrapper .card-group {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 700px) {
+  .select-product-wrapper .card-group {
+    grid-template-columns: 1fr;
+  }
+}

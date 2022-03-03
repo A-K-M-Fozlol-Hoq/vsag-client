@@ -3,9 +3,10 @@ import { AiFillDelete } from 'react-icons/ai';
 const Services = () => {
   const [file, setFile] = useState('');
   const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [products, setProducts] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/product/getAll', {
+    fetch('http://localhost:4000/service/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -21,11 +22,12 @@ const Services = () => {
     updateLogosState();
   }, []);
   const handleSubmit = () => {
-    if (name && file) {
+    if (name && file && description) {
       const formData = new FormData();
       formData.append('image', file);
       formData.append('name', name);
-      fetch('http://localhost:4000/product/add', {
+      formData.append('description', description);
+      fetch('http://localhost:4000/service/add', {
         method: 'POST',
         body: formData,
       })
@@ -41,18 +43,18 @@ const Services = () => {
           console.error(error);
         });
     } else {
-      alert('Please enter a product name and input file');
+      alert('Please enter a product name, description and input file');
     }
   };
   const handleClick = (product) => {
-    fetch(`http://localhost:4000/product/deleteById/${product._id}`, {
+    fetch(`http://localhost:4000/service/deleteById/${product._id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (data.message === 'Product was removed successfully!') {
-          alert('Product removed successfully');
+        if (data.message === 'Service was removed successfully!') {
+          alert('Service removed successfully');
           updateLogosState();
         }
       })
@@ -115,10 +117,19 @@ const Services = () => {
           onChange={(e) => setName(e.target.value)}
           type="text"
           name=""
-          className="form-control mt-2 mb-2"
+          className="form-control mt-2 "
           placeholder="enter product name"
           id=""
         />
+        <textarea
+          className="form-control mt-2 mb-2"
+          name=""
+          id=""
+          cols="10"
+          placeholder="Enter product description"
+          rows="2"
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
         <div className="btn btn-primary mt-2" onClick={handleSubmit}>
           Add Service
         </div>
