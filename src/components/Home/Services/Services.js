@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import one from './images/one.jpg';
-import two from './images/two.jpg';
-import three from './images/three.jpg';
 import './Service.css';
 const Services = () => {
   const [services, setServices] = useState([]);

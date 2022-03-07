@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import start from './images/start.jpg';
 import extend from './images/extend.jpg';
 import top from './images/top.webp';
 // need png
 import './Slider.css';
 const Slider = () => {
+  // src={`data:image/png;base64,${service.image.img}`}
+  const [slides, setSlides] = useState([]);
+  const updateLogosState = () => {
+    fetch('http://localhost:4000/slide/getAll', {
+      method: 'GET',
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setSlides(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  useEffect(() => {
+    updateLogosState();
+  }, []);
   return (
     <div className="slider-wrapper">
       <div className="container">
@@ -14,7 +32,30 @@ const Slider = () => {
           data-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active">
+            {slides.map((slide, i) => (
+              <div
+                className={`carousel-item ${i === 0 ? 'active' : ''} `}
+                key={slide._id}
+              >
+                <div className="row align-items-center">
+                  <div className="col-md-7">
+                    <h1>{slide.title}</h1>
+                    <p>{slide.description}</p>
+                    <button className="buy-now-button btn btn-danger">
+                      Learn more...
+                    </button>
+                  </div>
+                  <div className="col-md-5">
+                    <img
+                      src={`data:image/png;base64,${slide.image.img}`}
+                      className="d-block w-100"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+            {/* <div className="carousel-item active">
               <div className="row align-items-center">
                 <div className="col-md-7">
                   <h1>Starting a New Restaurant?</h1>
@@ -22,7 +63,6 @@ const Slider = () => {
                     Let our award-winning team of operators, chefs, and industry
                     experts develop a winning launch plan for your brand.
                   </p>
-                  {/* <h1 className="price">$1200</h1> */}
                   <button className="buy-now-button btn btn-danger">
                     Learn more...
                   </button>
@@ -31,8 +71,8 @@ const Slider = () => {
                   <img src={start} className="d-block w-100" alt="..." />
                 </div>
               </div>
-            </div>
-            <div className="carousel-item">
+            </div> */}
+            {/* <div className="carousel-item">
               <div className="row align-items-center">
                 <div className="col-md-7">
                   <h1>Looking to Improve or Expand?</h1>
@@ -40,7 +80,6 @@ const Slider = () => {
                     As no two restaurant concepts are the same, we specialize in
                     creating unique playbooks to drive long-term growth
                   </p>
-                  {/* <h1 className="price">$420</h1> */}
                   <button className="buy-now-button btn btn-danger">
                     Learn more...
                   </button>
@@ -58,7 +97,6 @@ const Slider = () => {
                     We work with the best in the business for all our recruiting
                     needs.
                   </p>
-                  {/* <h1 className="price">$600</h1> */}
                   <button className="buy-now-button btn btn-danger">
                     Learn more...
                   </button>
@@ -67,8 +105,9 @@ const Slider = () => {
                   <img src={top} className="d-block w-100" alt="..." />
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
+
           <a
             className="carousel-control-prev"
             href="#carouselExampleControls"

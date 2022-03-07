@@ -1,6 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const CalculatorModal = () => {
+const CalculatorModal = ({ selectedProduct }) => {
+  console.log(selectedProduct);
+  const [email, setEmail] = useState('');
+  const sendEmail = () => {
+    const validateEmail = (email) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+    let isFieldValid = validateEmail(email);
+    if (isFieldValid) {
+      // sendTo
+      console.log(email, selectedProduct._id);
+      const formData = new FormData();
+      formData.append('sendTo', email);
+      formData.append('_id', selectedProduct._id);
+      fetch('http://localhost:4000/email/send', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.accepted.length > 0) {
+            alert('email sent successfully');
+            window.location.reload();
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      alert('Please enter valid email');
+    }
+  };
   return (
     <div
       className="modal fade"
@@ -30,7 +66,8 @@ const CalculatorModal = () => {
               className="form-control"
               type="text"
               name=""
-              placeholder="Enter Email or Phone Number"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter Your Email"
               id=""
             />
           </div>
@@ -42,7 +79,11 @@ const CalculatorModal = () => {
             >
               Close
             </button>
-            <button type="button" className="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={sendEmail}
+            >
               GET PRICE
             </button>
           </div>

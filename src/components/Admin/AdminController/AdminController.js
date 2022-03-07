@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
-import './Products.css';
-const Products = () => {
-  const [file, setFile] = useState('');
-  const [name, setName] = useState('');
-  const [products, setProducts] = useState([]);
-  const [price, setPrice] = useState();
-  const updateLogosState = () => {
-    fetch('http://localhost:4000/product/getAll', {
+import './adminController.css';
+const AdminController = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [admins, setAdmins] = useState([]);
+  const updateAdminState = () => {
+    fetch('http://localhost:4000/admin/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setProducts(data);
+        setAdmins(data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
   useEffect(() => {
-    updateLogosState();
+    updateAdminState();
   }, []);
   const handleSubmit = () => {
-    if (name && file && price) {
+    if (email && password) {
       const formData = new FormData();
-      formData.append('image', file);
-      formData.append('name', name);
-      formData.append('price', price);
-      fetch('http://localhost:4000/product/add', {
+      formData.append('email', email);
+      formData.append('password', password);
+      fetch('http://localhost:4000/admin/add', {
         method: 'POST',
         body: formData,
       })
@@ -36,27 +34,27 @@ const Products = () => {
         .then((data) => {
           console.log(data);
           if (data._id) {
-            alert('Product created successfully');
-            updateLogosState();
+            alert('Admin created successfully');
+            updateAdminState();
           }
         })
         .catch((error) => {
           console.error(error);
         });
     } else {
-      alert('Please enter a product name and input file');
+      alert('Please enter all data');
     }
   };
-  const handleClick = (product) => {
-    fetch(`http://localhost:4000/product/deleteById/${product._id}`, {
+  const handleClick = (admin) => {
+    fetch(`http://localhost:4000/admin/deleteById/${admin._id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (data.message === 'Product was removed successfully!') {
-          alert('Product removed successfully');
-          updateLogosState();
+        if (data.message === 'Admin was removed successfully!') {
+          alert('Admin removed successfully');
+          updateAdminState();
         }
       })
       .catch((error) => {
@@ -65,9 +63,10 @@ const Products = () => {
         window.location.reload();
       });
   };
+
   return (
-    <div className="product-wrapper">
-      <h2 className="text-center mt-3">Added products</h2>
+    <div className="admin-controller-wrapper">
+      <h2 className="text-center mt-3">Added admins</h2>
       <div
         style={{
           backgroundColor: '#6EAD40',
@@ -77,16 +76,13 @@ const Products = () => {
           margin: '0 auto 50px',
         }}
       ></div>
-      <div className="all-products">
-        {products.map((product) => (
-          <div className="single-product" key={product._id}>
-            <img
-              src={`data:image/png;base64,${product.image.img}`}
-              alt="icon"
-            />
+      <div className="all-admins">
+        {admins.map((admin) => (
+          <div className="single-admin" key={admin._id}>
+            <p className="p">{admin.email}</p>
             <div
               onClick={() => {
-                handleClick(product);
+                handleClick(admin);
               }}
               className="delete-icon"
             >
@@ -97,7 +93,7 @@ const Products = () => {
       </div>
       <div style={{ width: '210px', margin: '20px auto 0' }}>
         {/* Enter a new client: <br /> */}
-        <h4 className="text-center mt-5">Add a new product</h4>
+        <h4 className="text-center mt-5">Add a new Admin</h4>
         <div
           style={{
             backgroundColor: '#6EAD40',
@@ -108,34 +104,29 @@ const Products = () => {
           }}
         ></div>
         <input
-          onChange={(e) => setFile(e.target.files[0])}
-          type="file"
-          name=""
-          id=""
-          className="form-control"
-        />
-        <input
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           type="text"
           name=""
-          className="form-control mt-2 mb-2"
-          placeholder="enter product name"
+          className="form-control mt-2 "
+          placeholder="enter admin email"
           id=""
         />
         <input
-          onChange={(e) => setPrice(e.target.value)}
-          type="number"
+          onChange={(e) => setPassword(e.target.value)}
+          type="text"
           name=""
-          className="form-control mt-2 mb-2"
-          placeholder="enter product price"
+          className="form-control mt-2 "
+          placeholder="enter admin password"
           id=""
         />
         <div className="btn btn-primary mt-2" onClick={handleSubmit}>
-          Add Product
+          Add Service
         </div>
       </div>
     </div>
   );
 };
 
-export default Products;
+// export default Services;
+
+export default AdminController;

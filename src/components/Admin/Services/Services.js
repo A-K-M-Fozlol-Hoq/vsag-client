@@ -35,7 +35,7 @@ const Services = () => {
         .then((data) => {
           console.log(data);
           if (data._id) {
-            alert('Product created successfully');
+            alert('Service created successfully');
             updateLogosState();
           }
         })
@@ -43,7 +43,7 @@ const Services = () => {
           console.error(error);
         });
     } else {
-      alert('Please enter a product name, description and input file');
+      alert('Please enter a Service name, description and input file');
     }
   };
   const handleClick = (product) => {
@@ -96,7 +96,7 @@ const Services = () => {
       </div>
       <div style={{ width: '210px', margin: '20px auto 0' }}>
         {/* Enter a new client: <br /> */}
-        <h4 className="text-center mt-5">Add a new product</h4>
+        <h4 className="text-center mt-5">Add a new Service</h4>
         <div
           style={{
             backgroundColor: '#6EAD40',
@@ -118,7 +118,7 @@ const Services = () => {
           type="text"
           name=""
           className="form-control mt-2 "
-          placeholder="enter product name"
+          placeholder="enter service name"
           id=""
         />
         <textarea
@@ -126,7 +126,7 @@ const Services = () => {
           name=""
           id=""
           cols="10"
-          placeholder="Enter product description"
+          placeholder="Enter service description"
           rows="2"
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>

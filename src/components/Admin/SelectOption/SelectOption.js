@@ -33,6 +33,13 @@ const SelectOption = (props) => {
         >
           Products
         </p>
+        <p
+          onClick={() => {
+            setShowCompo('admins');
+          }}
+        >
+          Admins
+        </p>
       </div>
     </div>
   );

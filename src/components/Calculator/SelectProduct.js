@@ -13,7 +13,7 @@ const SelectProduct = (props) => {
       <div className="container">
         <div className="card-group">
           {products.map((product) => (
-            <div className="card" key={product._key}>
+            <div className="card" key={product._id}>
               <p className="text-center pt-1 product-name">{product.name}</p>
               <img
                 src={`data:image/png;base64,${product.image.img}`}
@@ -24,8 +24,8 @@ const SelectProduct = (props) => {
                 <div
                   className="btn btn-select"
                   onClick={() => {
-                    setShowCompo('details');
                     setSelectedProduct(product);
+                    setShowCompo('details');
                   }}
                 >
                   Select

@@ -4,8 +4,9 @@ import Clients from '../Clients/Clients';
 import Slider from '../Slider/Slider';
 import Services from '../Services/Services';
 import Products from '../Products/Products';
+import AdminController from '../AdminController/AdminController';
 const Admin = () => {
-  const [showCompo, setShowCompo] = useState('');
+  const [showCompo, setShowCompo] = useState('slider');
   return (
     <div className="admin-wrapper">
       <SelectOption setShowCompo={setShowCompo}></SelectOption>
@@ -14,6 +15,7 @@ const Admin = () => {
         {showCompo === 'services' && <Services></Services>}
         {showCompo === 'clients' && <Clients></Clients>}
         {showCompo === 'products' && <Products></Products>}
+        {showCompo === 'admins' && <AdminController></AdminController>}
       </div>
     </div>
   );

@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 const Slider = () => {
   const [file, setFile] = useState('');
-  const [name, setName] = useState('');
-  const [products, setProducts] = useState([]);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [slides, setSlides] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/product/getAll', {
+    fetch('http://localhost:4000/slide/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setProducts(data);
+        setSlides(data);
       })
       .catch((error) => {
         console.error(error);
@@ -21,11 +22,12 @@ const Slider = () => {
     updateLogosState();
   }, []);
   const handleSubmit = () => {
-    if (name && file) {
+    if (title && file && description) {
       const formData = new FormData();
       formData.append('image', file);
-      formData.append('name', name);
-      fetch('http://localhost:4000/product/add', {
+      formData.append('title', title);
+      formData.append('description', description);
+      fetch('http://localhost:4000/slide/add', {
         method: 'POST',
         body: formData,
       })
@@ -33,32 +35,32 @@ const Slider = () => {
         .then((data) => {
           console.log(data);
           if (data._id) {
-            alert('Product created successfully');
-            updateLogosState();
+            alert('New slide created successfully');
+            window.location.reload();
           }
         })
         .catch((error) => {
           console.error(error);
         });
     } else {
-      alert('Please enter a product name and input file');
+      alert('Please enter a slide name, description and input file');
     }
   };
   const handleClick = (product) => {
-    fetch(`http://localhost:4000/product/deleteById/${product._id}`, {
+    fetch(`http://localhost:4000/slide/deleteById/${product._id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (data.message === 'Product was removed successfully!') {
-          alert('Product removed successfully');
+        if (data.message === 'Slide was removed successfully!') {
+          alert('Slide removed successfully');
           updateLogosState();
         }
       })
       .catch((error) => {
         console.error(error);
-        alert('Failed to remove client! Please try again');
+        alert('Failed to remove Slide! Please try again');
         window.location.reload();
       });
   };
@@ -75,15 +77,12 @@ const Slider = () => {
         }}
       ></div>
       <div className="all-products">
-        {products.map((product) => (
-          <div className="single-product" key={product._id}>
-            <img
-              src={`data:image/png;base64,${product.image.img}`}
-              alt="icon"
-            />
+        {slides.map((slide) => (
+          <div className="single-product" key={slide._id}>
+            <img src={`data:image/png;base64,${slide.image.img}`} alt="icon" />
             <div
               onClick={() => {
-                handleClick(product);
+                handleClick(slide);
               }}
               className="delete-icon"
             >
@@ -94,7 +93,7 @@ const Slider = () => {
       </div>
       <div style={{ width: '210px', margin: '20px auto 0' }}>
         {/* Enter a new client: <br /> */}
-        <h4 className="text-center mt-5">Add a new product</h4>
+        <h4 className="text-center mt-5">Add a new slide</h4>
         <div
           style={{
             backgroundColor: '#6EAD40',
@@ -112,13 +111,22 @@ const Slider = () => {
           className="form-control"
         />
         <input
-          onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setTitle(e.target.value)}
           type="text"
           name=""
           className="form-control mt-2 mb-2"
-          placeholder="enter product name"
+          placeholder="enter slider title"
           id=""
         />
+        <textarea
+          className="form-control mt-2 mb-2"
+          name=""
+          id=""
+          cols="10"
+          placeholder="Enter slide description"
+          rows="2"
+          onChange={(e) => setDescription(e.target.value)}
+        ></textarea>
         <div className="btn btn-primary mt-2" onClick={handleSubmit}>
           Add Slider
         </div>

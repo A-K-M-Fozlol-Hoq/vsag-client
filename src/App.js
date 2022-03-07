@@ -5,6 +5,9 @@ import CalculatorPage from './pages/CalculatorPage/CalculatorPage';
 import ContactUsPage from './pages/ContactUsPage/ContactUsPage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import AdminPage from './pages/AdminPage/AdminPage';
+import PageOne from './pages/PageOne';
+import PageTwo from './pages/PageTwo';
+import PageThree from './pages/PageThree';
 function App() {
   return (
     <div className="App">
@@ -28,6 +31,15 @@ function App() {
             </Route>
             <Route path="/admin-page">
               <AdminPage></AdminPage>
+            </Route>
+            <Route path="/pages/page1">
+              <PageOne />
+            </Route>
+            <Route path="/pages/page2">
+              <PageTwo />
+            </Route>
+            <Route path="/pages/page3">
+              <PageThree />
             </Route>
           </Switch>
         </div>

@@ -107,7 +107,8 @@ const Calculator = () => {
               Next
             </button>
           </div>
-          <CalculatorModal></CalculatorModal>
+
+          <CalculatorModal selectedProduct={selectedProduct}></CalculatorModal>
         </>
       )}
     </div>
