@@ -138,7 +138,7 @@ const Footer = (props) => {
         <div className="text-center p-3" style={{ backgroundColor: '#286A2D' }}>
           © 2022 Copyright:
           <a className="text-white" href="https://mdbootstrap.com/">
-            domain.com
+            frontend-8821f.web.app
           </a>
         </div>
       </footer>

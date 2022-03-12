@@ -47,6 +47,13 @@ const SelectOption = (props) => {
         >
           Inbox
         </p>
+        <p
+          onClick={() => {
+            setShowCompo('aboutUs');
+          }}
+        >
+          ABOUT US
+        </p>
       </div>
     </div>
   );
