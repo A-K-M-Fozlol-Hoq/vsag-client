@@ -5,6 +5,7 @@ import Slider from '../Slider/Slider';
 import Services from '../Services/Services';
 import Products from '../Products/Products';
 import AdminController from '../AdminController/AdminController';
+import Inbox from '../Inbox/Inbox';
 const Admin = () => {
   const [showCompo, setShowCompo] = useState('slider');
   return (
@@ -16,6 +17,7 @@ const Admin = () => {
         {showCompo === 'clients' && <Clients></Clients>}
         {showCompo === 'products' && <Products></Products>}
         {showCompo === 'admins' && <AdminController></AdminController>}
+        {showCompo === 'inbox' && <Inbox></Inbox>}
       </div>
     </div>
   );

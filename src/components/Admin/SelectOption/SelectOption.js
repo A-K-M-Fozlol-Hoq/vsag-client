@@ -40,6 +40,13 @@ const SelectOption = (props) => {
         >
           Admins
         </p>
+        <p
+          onClick={() => {
+            setShowCompo('inbox');
+          }}
+        >
+          Inbox
+        </p>
       </div>
     </div>
   );

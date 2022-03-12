@@ -45,7 +45,7 @@ const About = () => {
             color: 'white',
           }}
         >
-          Meet Our <span style={{ color: '#d61654' }}>Leadership</span>
+          Meet Our <span style={{ color: '#d61654' }}>Leaders</span>
         </h2>
         <div
           style={{

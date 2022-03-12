@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   AiFillFacebook,
   AiFillTwitterCircle,
@@ -7,6 +7,47 @@ import {
 } from 'react-icons/ai';
 import './ContactUs.css';
 const ContactUs = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [details, setDetails] = useState('');
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const submitForm = () => {
+    if (name && email && details) {
+      let isEmailValid = validateEmail(email);
+      if (isEmailValid) {
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('details', details);
+        fetch('http://localhost:4000/contactUs/add', {
+          method: 'POST',
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            if (data._id) {
+              alert('Your form is submitted successfully');
+              window.location.replace('/');
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      } else {
+        alert('Please enter a valid email');
+      }
+    } else {
+      alert('Please enter all data');
+    }
+  };
   return (
     <div className="contact-us-wrapper">
       <div style={{ padding: '50px' }}>
@@ -59,6 +100,7 @@ const ContactUs = () => {
             type="text"
             name="name"
             id="name"
+            onChange={(e) => setName(e.target.value)}
             placeholder="Enter your full name"
           />
           <p>Email</p>
@@ -66,6 +108,7 @@ const ContactUs = () => {
             type="text"
             name="email"
             id="email"
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
           />
           <p>Details</p>
@@ -73,6 +116,7 @@ const ContactUs = () => {
             type="text"
             name="textarea"
             id="details"
+            onChange={(e) => setDetails(e.target.value)}
             placeholder="Enter your project details"
           />
           <div
@@ -87,6 +131,7 @@ const ContactUs = () => {
             }}
             id="submit"
             className="submit-form"
+            onClick={submitForm}
           >
             SEND MESSAGE
           </div>

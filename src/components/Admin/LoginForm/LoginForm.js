@@ -29,6 +29,7 @@ const LoginForm = ({ setIsLoggedIn, setLoggedInUser }) => {
         })
         .catch((error) => {
           console.error(error);
+          alert('Please enter valid username and password');
         });
     } else {
       alert('Email and password is required');
