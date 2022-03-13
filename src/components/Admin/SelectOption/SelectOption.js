@@ -5,55 +5,55 @@ const SelectOption = (props) => {
   return (
     <div className="select-option-wrapper">
       <div className="select-menu">
-        <p
+        <button
           onClick={() => {
             setShowCompo('slider');
           }}
         >
           Slider
-        </p>
-        <p
+        </button>
+        <button
           onClick={() => {
             setShowCompo('services');
           }}
         >
           Services
-        </p>
-        <p
+        </button>
+        <button
           onClick={() => {
             setShowCompo('clients');
           }}
         >
           Clients
-        </p>
-        <p
+        </button>
+        <button
           onClick={() => {
             setShowCompo('products');
           }}
         >
           Products
-        </p>
-        <p
+        </button>
+        <button
           onClick={() => {
             setShowCompo('admins');
           }}
         >
           Admins
-        </p>
-        <p
+        </button>
+        <button
           onClick={() => {
             setShowCompo('inbox');
           }}
         >
           Inbox
-        </p>
-        <p
+        </button>
+        <button
           onClick={() => {
             setShowCompo('aboutUs');
           }}
         >
           ABOUT US
-        </p>
+        </button>
       </div>
     </div>
   );

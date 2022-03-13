@@ -18,7 +18,7 @@ const Inbox = () => {
       });
   }, []);
   return (
-    <div className="container">
+    <div className="container mt-5">
       {showTable ? (
         <InboxTable
           setShowTable={setShowTable}
