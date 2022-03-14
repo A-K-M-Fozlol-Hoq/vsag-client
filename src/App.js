@@ -9,9 +9,22 @@ import PageOne from './pages/PageOne';
 import PageTwo from './pages/PageTwo';
 import PageThree from './pages/PageThree';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
+import Helmet from 'react-helmet';
 function App() {
   return (
     <div className="App">
+      <Helmet>
+        <title>therestaurantpatio</title>
+        <meta
+          name="description"
+          content="We make the property rental journey simple for Landlords, Tenants and Vendors, by providing the
+necessary tools and knowledge for them to complete the rental cycle seamlessly and efficiently."
+        />
+        <meta
+          name="keywords"
+          content="therestaurantpatio, restaurantpatio, restaurant patio, the restaurant patio"
+        />
+      </Helmet>
       <>
         <Router>
           <div>
