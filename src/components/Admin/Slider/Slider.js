@@ -6,7 +6,7 @@ const Slider = () => {
   const [description, setDescription] = useState('');
   const [slides, setSlides] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/slide/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/slide/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -27,7 +27,7 @@ const Slider = () => {
       formData.append('image', file);
       formData.append('title', title);
       formData.append('description', description);
-      fetch('http://localhost:4000/slide/add', {
+      fetch('https://ancient-falls-69387.herokuapp.com/slide/add', {
         method: 'POST',
         body: formData,
       })
@@ -47,9 +47,12 @@ const Slider = () => {
     }
   };
   const handleClick = (product) => {
-    fetch(`http://localhost:4000/slide/deleteById/${product._id}`, {
-      method: 'DELETE',
-    })
+    fetch(
+      `https://ancient-falls-69387.herokuapp.com/slide/deleteById/${product._id}`,
+      {
+        method: 'DELETE',
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

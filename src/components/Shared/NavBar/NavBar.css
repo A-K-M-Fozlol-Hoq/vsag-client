@@ -22,3 +22,7 @@
 .nav-wrapper li a {
   color: #fff !important;
 }
+.nav-wrapper .main-logo {
+  min-height: 80px;
+  min-width: 80px;
+}

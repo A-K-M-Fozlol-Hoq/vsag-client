@@ -5,7 +5,7 @@ const Clients = () => {
   const [file, setFile] = useState('');
   const [logos, setLogos] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/client/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/client/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -23,7 +23,7 @@ const Clients = () => {
   const handleSubmit = () => {
     const formData = new FormData();
     formData.append('image', file);
-    fetch('http://localhost:4000/client/add', {
+    fetch('https://ancient-falls-69387.herokuapp.com/client/add', {
       method: 'POST',
       body: formData,
     })
@@ -40,9 +40,12 @@ const Clients = () => {
       });
   };
   const handleClick = (logo) => {
-    fetch(`http://localhost:4000/client/deleteById/${logo._id}`, {
-      method: 'DELETE',
-    })
+    fetch(
+      `https://ancient-falls-69387.herokuapp.com/client/deleteById/${logo._id}`,
+      {
+        method: 'DELETE',
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data.message === 'User was removed successfully!') {

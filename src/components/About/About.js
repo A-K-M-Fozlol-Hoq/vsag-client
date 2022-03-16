@@ -6,7 +6,7 @@ const About = () => {
   const [founderData, setFounderData] = useState({});
   const [coFounderData, setCoFounderData] = useState({});
   const updateFOunderState = () => {
-    fetch('http://localhost:4000/founder/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/founder/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -19,7 +19,7 @@ const About = () => {
       });
   };
   const updateCoFOunderState = () => {
-    fetch('http://localhost:4000/coFounder/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/coFounder/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -77,7 +77,7 @@ const About = () => {
             color: 'white',
           }}
         >
-          Meet Our <span style={{ color: '#d61654' }}>Leaders</span>
+          Meet Our <span style={{ color: '#d61654' }}>Founder</span>
         </h2>
         <div
           style={{
@@ -99,11 +99,11 @@ const About = () => {
               <h3>{founderData.name}</h3>
               <p>founder, therestaurantpatio</p>
             </div>
-            <div className="col-md-6 mt-5">
+            <div className="col-md-6" style={{ paddingTop: '5rem' }}>
               <p className="text-white">{founderData.description}</p>
             </div>
           </div>
-          <div className="row mt-5">
+          {/* <div className="row mt-5">
             <div className="col-md-6 mt-5">
               <p className="text-white">{coFounderData.description}</p>
             </div>
@@ -116,7 +116,7 @@ const About = () => {
               <h3>{coFounderData.name}</h3>
               <p>Co Founder, therestaurantpatio</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

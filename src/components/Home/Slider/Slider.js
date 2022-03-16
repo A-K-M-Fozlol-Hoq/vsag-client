@@ -8,7 +8,7 @@ const Slider = () => {
   // src={`data:image/png;base64,${service.image.img}`}
   const [slides, setSlides] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/slide/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/slide/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())

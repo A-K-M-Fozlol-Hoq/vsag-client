@@ -6,7 +6,7 @@ const Inbox = () => {
   const [messages, setMessages] = useState([]);
   const [messageDetails, setMessageDetails] = useState('');
   useEffect(() => {
-    fetch('http://localhost:4000/contactUs/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/contactUs/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())

@@ -20,7 +20,7 @@ const AdminPage = () => {
       const formData = new FormData();
       formData.append('email', sessionStorage.getItem('email'));
       formData.append('password', sessionStorage.getItem('hash'));
-      fetch('http://localhost:4000/admin/isValid', {
+      fetch('https://ancient-falls-69387.herokuapp.com/admin/isValid', {
         method: 'POST',
         body: formData,
       })

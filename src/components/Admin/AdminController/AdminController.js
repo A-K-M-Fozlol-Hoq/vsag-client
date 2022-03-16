@@ -6,7 +6,7 @@ const AdminController = () => {
   const [password, setPassword] = useState('');
   const [admins, setAdmins] = useState([]);
   const updateAdminState = () => {
-    fetch('http://localhost:4000/admin/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/admin/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -26,7 +26,7 @@ const AdminController = () => {
       const formData = new FormData();
       formData.append('email', email);
       formData.append('password', password);
-      fetch('http://localhost:4000/admin/add', {
+      fetch('https://ancient-falls-69387.herokuapp.com/admin/add', {
         method: 'POST',
         body: formData,
       })
@@ -46,9 +46,12 @@ const AdminController = () => {
     }
   };
   const handleClick = (admin) => {
-    fetch(`http://localhost:4000/admin/deleteById/${admin._id}`, {
-      method: 'DELETE',
-    })
+    fetch(
+      `https://ancient-falls-69387.herokuapp.com/admin/deleteById/${admin._id}`,
+      {
+        method: 'DELETE',
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

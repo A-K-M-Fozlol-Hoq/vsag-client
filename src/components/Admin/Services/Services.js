@@ -6,7 +6,7 @@ const Services = () => {
   const [description, setDescription] = useState('');
   const [products, setProducts] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/service/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/service/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -27,7 +27,7 @@ const Services = () => {
       formData.append('image', file);
       formData.append('name', name);
       formData.append('description', description);
-      fetch('http://localhost:4000/service/add', {
+      fetch('https://ancient-falls-69387.herokuapp.com/service/add', {
         method: 'POST',
         body: formData,
       })
@@ -47,9 +47,12 @@ const Services = () => {
     }
   };
   const handleClick = (product) => {
-    fetch(`http://localhost:4000/service/deleteById/${product._id}`, {
-      method: 'DELETE',
-    })
+    fetch(
+      `https://ancient-falls-69387.herokuapp.com/service/deleteById/${product._id}`,
+      {
+        method: 'DELETE',
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

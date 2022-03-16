@@ -3,9 +3,12 @@ import React from 'react';
 const InboxTable = (props) => {
   const { messages, setMessageDetails, setShowTable } = props;
   const deleteMessage = (id) => {
-    fetch(`http://localhost:4000/contactUs/deleteById/${id}`, {
-      method: 'DELETE',
-    })
+    fetch(
+      `https://ancient-falls-69387.herokuapp.com/contactUs/deleteById/${id}`,
+      {
+        method: 'DELETE',
+      }
+    )
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

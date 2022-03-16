@@ -8,7 +8,7 @@ const Calculator = () => {
   const [selectedProduct, setSelectedProduct] = useState({});
   const [showCompo, setShowCompo] = useState('products');
   const updateProductsState = () => {
-    fetch('http://localhost:4000/product/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/product/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())

@@ -3,7 +3,7 @@ import './Service.css';
 const Services = () => {
   const [services, setServices] = useState([]);
   const updateLogosState = () => {
-    fetch('http://localhost:4000/service/getAll', {
+    fetch('https://ancient-falls-69387.herokuapp.com/service/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())

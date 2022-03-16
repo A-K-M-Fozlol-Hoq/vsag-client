@@ -14,7 +14,7 @@ const AboutUs = () => {
       formData.append('image', founderProfile);
       formData.append('description', founderBio);
       formData.append('name', founderName);
-      fetch('http://localhost:4000/founder/updateFounder', {
+      fetch('https://ancient-falls-69387.herokuapp.com/founder/updateFounder', {
         method: 'POST',
         body: formData,
       })
@@ -39,10 +39,13 @@ const AboutUs = () => {
       formData.append('image', coFounderProfile);
       formData.append('description', coFounderBio);
       formData.append('name', coFounderName);
-      fetch('http://localhost:4000/coFounder/updateCoFounder', {
-        method: 'POST',
-        body: formData,
-      })
+      fetch(
+        'https://ancient-falls-69387.herokuapp.com/coFounder/updateCoFounder',
+        {
+          method: 'POST',
+          body: formData,
+        }
+      )
         .then((response) => response.json())
         .then((data) => {
           console.log(data);

@@ -12,7 +12,7 @@ const NavBar = (props) => {
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            <img src={logo} className="d-block w-100" alt="" />
+            <img src={logo} className="d-block main-logo w-100" alt="" />
           </a>
           <button
             className="navbar-toggler"

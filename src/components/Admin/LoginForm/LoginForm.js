@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 const LoginForm = ({ setIsLoggedIn, setLoggedInUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const handleLogin = (e) => {
     e.preventDefault();
     if (email && password) {
       const formData = new FormData();
       formData.append('email', email);
       formData.append('password', password);
-      fetch('http://localhost:4000/admin/login', {
+      fetch('https://ancient-falls-69387.herokuapp.com/admin/login', {
         method: 'POST',
         body: formData,
       })
@@ -59,6 +60,7 @@ const LoginForm = ({ setIsLoggedIn, setLoggedInUser }) => {
             placeholder="Password"
           />
         </div>
+
         <button
           type="submit"
           className="btn btn-primary mt-2"

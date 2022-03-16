@@ -18,7 +18,7 @@ const CalculatorModal = ({ selectedProduct }) => {
       const formData = new FormData();
       formData.append('sendTo', email);
       formData.append('_id', selectedProduct._id);
-      fetch('http://localhost:4000/email/send', {
+      fetch('https://ancient-falls-69387.herokuapp.com/email/send', {
         method: 'POST',
         body: formData,
       })
