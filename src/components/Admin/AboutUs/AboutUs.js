@@ -91,15 +91,15 @@ const AboutUs = () => {
         Update Founder
       </div>
 
-      <input
+      {/* <input
         onChange={(e) => setCoFounderProfile(e.target.files[0])}
         type="file"
         name=""
         id=""
         className="form-control"
-      />
+      /> */}
       {/* setCoFounderName */}
-      <input
+      {/* <input
         onChange={(e) => setCoFounderName(e.target.value)}
         type="text"
         name=""
@@ -118,7 +118,7 @@ const AboutUs = () => {
       ></textarea>
       <div className="btn btn-primary" onClick={updateCoFounder}>
         Update Co Founder
-      </div>
+      </div> */}
     </div>
   );
 };
