@@ -7,12 +7,47 @@ import Products from '../Products/Products';
 import AdminController from '../AdminController/AdminController';
 import Inbox from '../Inbox/Inbox';
 import AboutUs from '../AboutUs/AboutUs';
+import Pages from '../Pages/Pages';
 const Admin = () => {
-  const [showCompo, setShowCompo] = useState('slider');
+  const [showCompo, setShowCompo] = useState(sessionStorage.getItem('showAdminCompo')||'slider');
   return (
     <div className="admin-wrapper">
       <SelectOption setShowCompo={setShowCompo}></SelectOption>
       <div>
+        {/* {
+          showCompo === 'slider'?
+          <Slider></Slider>
+          :
+          <>
+            {
+              showCompo === 'services'?
+              <Services></Services>
+              :
+              <>
+              {
+                showCompo === 'clients'?
+                <Clients></Clients>
+                :
+                <>
+                {
+                  showCompo === 'products'?
+                  <Products></Products>
+                  :
+                  <>
+                  {
+                    showCompo === 'products'?
+                    <Products></Products>
+                    :
+                    <Services></Services>
+                  }
+                  </>
+                }
+                </>
+              }
+              </>
+            }
+          </>
+        } */}
         {showCompo === 'slider' && <Slider></Slider>}
         {showCompo === 'services' && <Services></Services>}
         {showCompo === 'clients' && <Clients></Clients>}
@@ -20,6 +55,7 @@ const Admin = () => {
         {showCompo === 'admins' && <AdminController></AdminController>}
         {showCompo === 'inbox' && <Inbox></Inbox>}
         {showCompo === 'aboutUs' && <AboutUs />}
+        {showCompo === 'pages' && <Pages />}
       </div>
     </div>
   );

@@ -6,12 +6,12 @@ const OurClients = () => {
   let loopIndex = 0;
   const [fakeArray, setFakeArray] = useState([]);
   const updateLogosState = () => {
-    fetch('https://ancient-falls-69387.herokuapp.com/client/getAll', {
+    fetch('https://therestaurantpatio.com/api/client/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
 
         setLogos(data);
       })

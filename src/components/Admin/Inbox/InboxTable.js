@@ -4,14 +4,14 @@ const InboxTable = (props) => {
   const { messages, setMessageDetails, setShowTable } = props;
   const deleteMessage = (id) => {
     fetch(
-      `https://ancient-falls-69387.herokuapp.com/contactUs/deleteById/${id}`,
+      `https://therestaurantpatio.com/api/contactUs/deleteById/${id}`,
       {
         method: 'DELETE',
       }
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.message === 'form was removed successfully!') {
           alert('Message removed successfully');
           window.location.reload();

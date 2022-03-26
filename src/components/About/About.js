@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './About.css';
-import one from './images/one.jfif';
+import profile from './images/profile.png';
 import two from './images/two.jpg';
 const About = () => {
   const [founderData, setFounderData] = useState({});
   const [coFounderData, setCoFounderData] = useState({});
   const updateFOunderState = () => {
-    fetch('https://ancient-falls-69387.herokuapp.com/founder/getAll', {
+    fetch('https://therestaurantpatio.com/api/founder/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setFounderData(data[0]);
       })
       .catch((error) => {
@@ -19,12 +19,12 @@ const About = () => {
       });
   };
   const updateCoFOunderState = () => {
-    fetch('https://ancient-falls-69387.herokuapp.com/coFounder/getAll', {
+    fetch('https://therestaurantpatio.com/api/coFounder/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setCoFounderData(data[0]);
       })
       .catch((error) => {
@@ -91,11 +91,19 @@ const About = () => {
         <div className="container text-white" style={{ marginTop: '80px' }}>
           <div className="row">
             <div className="col-md-6 text-center">
-              <img
+              {founderData.image?
+                <img
                 className="profile-image"
                 src={`data:image/png;base64,${founderData.image?.img}`}
                 alt="profile"
               />
+              :
+              <img
+                className="profile-image"
+                src={profile}
+                alt="profile"
+              />
+              }
               <h3>{founderData.name}</h3>
               <p>founder, therestaurantpatio</p>
             </div>

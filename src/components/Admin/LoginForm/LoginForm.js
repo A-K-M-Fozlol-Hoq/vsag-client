@@ -10,13 +10,13 @@ const LoginForm = ({ setIsLoggedIn, setLoggedInUser }) => {
       const formData = new FormData();
       formData.append('email', email);
       formData.append('password', password);
-      fetch('https://ancient-falls-69387.herokuapp.com/admin/login', {
+      fetch('https://therestaurantpatio.com/api/admin/login', {
         method: 'POST',
         body: formData,
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           if (data.token) {
             // alert('Service created successfully');
             // updateLogosState();

@@ -8,6 +8,7 @@ const SelectOption = (props) => {
         <button
           onClick={() => {
             setShowCompo('slider');
+            sessionStorage.setItem('showAdminCompo', 'slider');
           }}
         >
           Slider
@@ -15,6 +16,7 @@ const SelectOption = (props) => {
         <button
           onClick={() => {
             setShowCompo('services');
+            sessionStorage.setItem('showAdminCompo', 'services');
           }}
         >
           Services
@@ -22,6 +24,7 @@ const SelectOption = (props) => {
         <button
           onClick={() => {
             setShowCompo('clients');
+            sessionStorage.setItem('showAdminCompo', 'clients');
           }}
         >
           Clients
@@ -29,6 +32,7 @@ const SelectOption = (props) => {
         <button
           onClick={() => {
             setShowCompo('products');
+            sessionStorage.setItem('showAdminCompo', 'products');
           }}
         >
           Products
@@ -36,6 +40,7 @@ const SelectOption = (props) => {
         <button
           onClick={() => {
             setShowCompo('admins');
+            sessionStorage.setItem('showAdminCompo', 'admins');
           }}
         >
           Admins
@@ -43,6 +48,7 @@ const SelectOption = (props) => {
         <button
           onClick={() => {
             setShowCompo('inbox');
+            sessionStorage.setItem('showAdminCompo', 'inbox');
           }}
         >
           Inbox
@@ -50,9 +56,18 @@ const SelectOption = (props) => {
         <button
           onClick={() => {
             setShowCompo('aboutUs');
+            sessionStorage.setItem('showAdminCompo', 'aboutUs');
           }}
         >
           ABOUT US
+        </button>
+        <button
+          onClick={() => {
+            setShowCompo('pages');
+            sessionStorage.setItem('showAdminCompo', 'pages');
+          }}
+        >
+          PAGES
         </button>
       </div>
     </div>
