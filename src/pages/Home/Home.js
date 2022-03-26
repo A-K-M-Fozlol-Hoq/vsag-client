@@ -6,7 +6,7 @@ import Slider from '../../components/Home/Slider/Slider';
 import Footer from '../../components/Shared/Footer/Footer';
 import NavBar from '../../components/Shared/NavBar/NavBar';
 import { Helmet } from 'react-helmet';
-
+import './Home.css'
 const Home = () => {
   // style={{ backgroundImage: 'linear-gradient(45deg,#286A2D,#6EAD40)' }}
   return (
@@ -29,10 +29,10 @@ necessary tools and knowledge for them to complete the rental cycle seamlessly a
         style={{
           color: '#fff',
           textAlign: 'center',
-          fontSize: '35px',
           padding: '30px 0',
           background: '#6EAD40',
         }}
+        className="reaturant-and-hospitality-text"
       >
         We Are Restaurant and Hospitality Consulting Experts.
         <div className="learn-more">Learn more.</div>

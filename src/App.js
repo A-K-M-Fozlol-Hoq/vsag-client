@@ -10,6 +10,14 @@ import PageTwo from './pages/PageTwo';
 import PageThree from './pages/PageThree';
 import MessengerCustomerChat from 'react-messenger-customer-chat';
 import Helmet from 'react-helmet';
+import PatioHeating from './pages/PatioHeating/PatioHeating';
+import MotorizedShades from './pages/MotorizedShades/MotorizedShades';
+import OutdoorLighting from './pages/OutdoorLighting/OutdoorLighting';
+import AudioAndVideo from './pages/AudioAndVideo/AudioAndVideo';
+import OutdoorFurniture from './pages/OutdoorFurniture/OutdoorFurniture';
+import RestaurantPatioDesign from './pages/RestaurantPatioDesign/RestaurantPatioDesign';
+import NotFound from './pages/NotFound/NotFound';
+import Services from './pages/Services/Services';
 function App() {
   return (
     <div className="App">
@@ -47,7 +55,7 @@ necessary tools and knowledge for them to complete the rental cycle seamlessly a
               <Route path="/admin-page">
                 <AdminPage></AdminPage>
               </Route>
-              <Route path="/pages/page1">
+              {/* <Route path="/pages/page1">
                 <PageOne />
               </Route>
               <Route path="/pages/page2">
@@ -55,6 +63,30 @@ necessary tools and knowledge for them to complete the rental cycle seamlessly a
               </Route>
               <Route path="/pages/page3">
                 <PageThree />
+              </Route> */}
+              <Route path="/services/patio-heating">
+                <PatioHeating></PatioHeating>
+              </Route>
+              <Route path="/services/motorized-shades">
+                <MotorizedShades></MotorizedShades>
+              </Route>
+              <Route path="/services/outdoor-lighting">
+                <OutdoorLighting></OutdoorLighting>
+              </Route>
+              <Route path="/services/audio-and-video">
+                <AudioAndVideo></AudioAndVideo>
+              </Route>
+              <Route path="/services/outdoor-furniture">
+                <OutdoorFurniture></OutdoorFurniture>
+              </Route>
+              <Route path="/services/restaurant-patio-design">
+                <RestaurantPatioDesign></RestaurantPatioDesign>
+              </Route>
+              <Route exact path="/services/:slug">
+                <Services></Services>
+              </Route>
+              <Route path="*">
+                <NotFound></NotFound>
               </Route>
             </Switch>
           </div>

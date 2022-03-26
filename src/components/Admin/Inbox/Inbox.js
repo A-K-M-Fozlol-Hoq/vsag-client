@@ -6,7 +6,7 @@ const Inbox = () => {
   const [messages, setMessages] = useState([]);
   const [messageDetails, setMessageDetails] = useState('');
   useEffect(() => {
-    fetch('https://ancient-falls-69387.herokuapp.com/contactUs/getAll', {
+    fetch('https://therestaurantpatio.com/api/contactUs/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())

@@ -30,3 +30,9 @@
   width: 80px !important;
   height: 80px !important;
 }
+/* 991 */
+@media screen and (max-width: 992px) {
+  .nav-wrapper .dropdown-menu {
+    margin-left: 0 !important;
+  }
+}

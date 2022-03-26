@@ -1,5 +1,9 @@
 .our-clients-wrapper {
   margin: 50px 0;
+} 
+.our-clients-wrapper .container{
+  
+  padding-bottom: 50px;
 }
 .our-clients-wrapper .btn {
   background: #286a2d !important;
@@ -20,4 +24,10 @@
   border-radius: 20px;
   margin: 50px auto;
   height: 400px;
+}
+
+@media screen and (max-width: 600px) {
+  .our-clients-wrapper .align-items-center .col-md-6{
+    padding-bottom: 20px;
+  }
 }

@@ -6,12 +6,12 @@ const Slider = () => {
   const [description, setDescription] = useState('');
   const [slides, setSlides] = useState([]);
   const updateLogosState = () => {
-    fetch('https://ancient-falls-69387.herokuapp.com/slide/getAll', {
+    fetch('https://therestaurantpatio.com/api/slide/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setSlides(data);
       })
       .catch((error) => {
@@ -27,13 +27,13 @@ const Slider = () => {
       formData.append('image', file);
       formData.append('title', title);
       formData.append('description', description);
-      fetch('https://ancient-falls-69387.herokuapp.com/slide/add', {
+      fetch('https://therestaurantpatio.com/api/slide/add', {
         method: 'POST',
         body: formData,
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           if (data._id) {
             alert('New slide created successfully');
             window.location.reload();
@@ -48,14 +48,14 @@ const Slider = () => {
   };
   const handleClick = (product) => {
     fetch(
-      `https://ancient-falls-69387.herokuapp.com/slide/deleteById/${product._id}`,
+      `https://therestaurantpatio.com/api/slide/deleteById/${product._id}`,
       {
         method: 'DELETE',
       }
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.message === 'Slide was removed successfully!') {
           alert('Slide removed successfully');
           updateLogosState();

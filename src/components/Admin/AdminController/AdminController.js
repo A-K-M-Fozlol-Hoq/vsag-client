@@ -6,12 +6,12 @@ const AdminController = () => {
   const [password, setPassword] = useState('');
   const [admins, setAdmins] = useState([]);
   const updateAdminState = () => {
-    fetch('https://ancient-falls-69387.herokuapp.com/admin/getAll', {
+    fetch('https://therestaurantpatio.com/api/admin/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setAdmins(data);
       })
       .catch((error) => {
@@ -26,13 +26,13 @@ const AdminController = () => {
       const formData = new FormData();
       formData.append('email', email);
       formData.append('password', password);
-      fetch('https://ancient-falls-69387.herokuapp.com/admin/add', {
+      fetch('https://therestaurantpatio.com/api/admin/add', {
         method: 'POST',
         body: formData,
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           if (data._id) {
             alert('Admin created successfully');
             updateAdminState();
@@ -47,14 +47,14 @@ const AdminController = () => {
   };
   const handleClick = (admin) => {
     fetch(
-      `https://ancient-falls-69387.herokuapp.com/admin/deleteById/${admin._id}`,
+      `https://therestaurantpatio.com/api/admin/deleteById/${admin._id}`,
       {
         method: 'DELETE',
       }
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.message === 'Admin was removed successfully!') {
           alert('Admin removed successfully');
           updateAdminState();

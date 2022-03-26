@@ -34,13 +34,13 @@ const ContactUs = () => {
         formData.append('name', name);
         formData.append('email', email);
         formData.append('details', details);
-        fetch('https://ancient-falls-69387.herokuapp.com/contactUs/add', {
+        fetch('https://therestaurantpatio.com/api/contactUs/add', {
           method: 'POST',
           body: formData,
         })
           .then((response) => response.json())
           .then((data) => {
-            console.log(data);
+            
             if (data._id) {
               alert('Your form is submitted successfully');
               window.location.replace('/');
@@ -228,13 +228,13 @@ export default ContactUs;
 //         formData.append('name', name);
 //         formData.append('email', email);
 //         formData.append('details', details);
-//         fetch('https://ancient-falls-69387.herokuapp.com/contactUs/add', {
+//         fetch('https://therestaurantpatio.com:4172contactUs/add', {
 //           method: 'POST',
 //           body: formData,
 //         })
 //           .then((response) => response.json())
 //           .then((data) => {
-//             console.log(data);
+//             
 //             if (data._id) {
 //               alert('Your form is submitted successfully');
 //               window.location.replace('/');

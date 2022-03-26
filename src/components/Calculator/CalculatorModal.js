@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const CalculatorModal = ({ selectedProduct }) => {
-  console.log(selectedProduct);
   const [email, setEmail] = useState('');
   const sendEmail = () => {
     const validateEmail = (email) => {
@@ -13,18 +12,16 @@ const CalculatorModal = ({ selectedProduct }) => {
     };
     let isFieldValid = validateEmail(email);
     if (isFieldValid) {
-      // sendTo
-      console.log(email, selectedProduct._id);
       const formData = new FormData();
       formData.append('sendTo', email);
       formData.append('_id', selectedProduct._id);
-      fetch('https://ancient-falls-69387.herokuapp.com/email/send', {
+      fetch('https://therestaurantpatio.com/api/email/send', {
         method: 'POST',
         body: formData,
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           if (data.accepted.length > 0) {
             alert('email sent successfully');
             window.location.reload();

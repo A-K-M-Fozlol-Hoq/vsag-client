@@ -8,19 +8,18 @@ const AboutUs = () => {
   const [coFounderBio, setCoFounderBio] = useState();
   const [coFounderName, setCoFounderName] = useState();
   const updateFounder = () => {
-    console.log(founderProfile, founderBio);
     if (founderProfile && founderBio && founderName) {
       const formData = new FormData();
       formData.append('image', founderProfile);
       formData.append('description', founderBio);
       formData.append('name', founderName);
-      fetch('https://ancient-falls-69387.herokuapp.com/founder/updateFounder', {
+      fetch('https://therestaurantpatio.com/api/founder/updateFounder', {
         method: 'POST',
         body: formData,
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           if (data.modifiedCount) {
             alert('Founder updated successfully');
             // updateAdminState();
@@ -40,7 +39,7 @@ const AboutUs = () => {
       formData.append('description', coFounderBio);
       formData.append('name', coFounderName);
       fetch(
-        'https://ancient-falls-69387.herokuapp.com/coFounder/updateCoFounder',
+        'https://therestaurantpatio.com/api/coFounder/updateCoFounder',
         {
           method: 'POST',
           body: formData,
@@ -48,7 +47,7 @@ const AboutUs = () => {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           if (data.modifiedCount) {
             alert('Co Founder updated successfully');
             // updateAdminState();

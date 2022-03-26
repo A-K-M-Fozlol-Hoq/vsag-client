@@ -6,12 +6,12 @@ const Services = () => {
   const [description, setDescription] = useState('');
   const [products, setProducts] = useState([]);
   const updateLogosState = () => {
-    fetch('https://ancient-falls-69387.herokuapp.com/service/getAll', {
+    fetch('https://therestaurantpatio.com/api/service/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setProducts(data);
       })
       .catch((error) => {
@@ -27,13 +27,13 @@ const Services = () => {
       formData.append('image', file);
       formData.append('name', name);
       formData.append('description', description);
-      fetch('https://ancient-falls-69387.herokuapp.com/service/add', {
+      fetch('https://therestaurantpatio.com/api/service/add', {
         method: 'POST',
         body: formData,
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          
           if (data._id) {
             alert('Service created successfully');
             updateLogosState();
@@ -48,14 +48,14 @@ const Services = () => {
   };
   const handleClick = (product) => {
     fetch(
-      `https://ancient-falls-69387.herokuapp.com/service/deleteById/${product._id}`,
+      `https://therestaurantpatio.com/api/service/deleteById/${product._id}`,
       {
         method: 'DELETE',
       }
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         if (data.message === 'Service was removed successfully!') {
           alert('Service removed successfully');
           updateLogosState();

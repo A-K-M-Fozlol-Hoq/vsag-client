@@ -5,12 +5,12 @@ const Clients = () => {
   const [file, setFile] = useState('');
   const [logos, setLogos] = useState([]);
   const updateLogosState = () => {
-    fetch('https://ancient-falls-69387.herokuapp.com/client/getAll', {
+    fetch('https://therestaurantpatio.com/api/client/getAll', {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         setLogos(data);
       })
       .catch((error) => {
@@ -23,13 +23,13 @@ const Clients = () => {
   const handleSubmit = () => {
     const formData = new FormData();
     formData.append('image', file);
-    fetch('https://ancient-falls-69387.herokuapp.com/client/add', {
+    fetch('https://therestaurantpatio.com/api/client/add', {
       method: 'POST',
       body: formData,
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
         if (data._id) {
           alert('Client created successfully');
           updateLogosState();
@@ -41,7 +41,7 @@ const Clients = () => {
   };
   const handleClick = (logo) => {
     fetch(
-      `https://ancient-falls-69387.herokuapp.com/client/deleteById/${logo._id}`,
+      `https://therestaurantpatio.com/api/client/deleteById/${logo._id}`,
       {
         method: 'DELETE',
       }

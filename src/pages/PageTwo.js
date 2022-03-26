@@ -5,7 +5,7 @@ const PageTwo = () => {
   return (
     <div>
       <NavBar></NavBar>
-      <h1 className="p-5 text-center">Page one</h1>
+      <h1 className="p-5 text-center">Page Two</h1>
       <Footer></Footer>
     </div>
   );

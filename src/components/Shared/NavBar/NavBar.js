@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import logo from './logo.png';
 import './NavBar.css';
 const NavBar = (props) => {
+  const history = useHistory();
   return (
     <div className="nav-wrapper">
       <nav
         className="navbar navbar-expand-lg navbar-light "
         // style={{ background: '#fff' }}
-        style={{ background: '#286A2D' }}
+        style={{ background: '#286A2D', overflow: 'hidden' }}
       >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
@@ -50,9 +51,116 @@ const NavBar = (props) => {
                   CONTACT US
                 </Link>
               </li>
-              {props.showLoginLogout && (
-                <li className="nav-item">
-                  <button className="btn btn-primary">Login</button>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle mx-2"
+                  href="#"
+                  id="navbarScrollingDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  SERVICES
+                </a>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="navbarScrollingDropdown"
+                  style={{ marginLeft: '-50px' }}
+                >
+                  {/* Patio heating 
+Motorized shades
+Outdoor lighting
+Audio and video 
+Outdoor furniture 
+Restaurant Patio design */}
+
+                  <li>
+                    <p
+                      className="dropdown-item"
+                      onClick={() => history.push('/services/patio-heating')}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      PATIO HEATING
+                    </p>
+                    {/* <a className="dropdown-item" href="/services/patio-heating"
+                      >PAITON HEATING</a
+                    > */}
+                  </li>
+                  <li>
+                    {/* <a className="dropdown-item" href="/services/monitorized-shades" 
+                      >MONITORIZED SHADES</a
+                    > */}
+                    <p
+                      className="dropdown-item"
+                      onClick={() => history.push('/services/motorized-shades')}
+                      style={{ cursor: 'pointer', marginTop: '-10px' }}
+                    >
+                      MOTORIZED SHADES
+                    </p>
+                  </li>
+                  <li>
+                    {/* <a className="dropdown-item" href="/services/outdoor-lighting"
+                      >OUTDOOR LIGHTING</a
+                    > */}
+                    <p
+                      className="dropdown-item"
+                      onClick={() => history.push('/services/outdoor-lighting')}
+                      style={{ cursor: 'pointer', marginTop: '-10px' }}
+                    >
+                      OUTDOOR LIGHTING
+                    </p>
+                  </li>
+                  <li>
+                    {/* <a className="dropdown-item" href="/services/audio-and-video"
+                      >AUDIO AND VIDEO</a
+                    > */}
+                    <p
+                      className="dropdown-item"
+                      onClick={() => history.push('/services/audio-and-video')}
+                      style={{ cursor: 'pointer', marginTop: '-10px' }}
+                    >
+                      AUDIO AND VIDEO
+                    </p>
+                  </li>
+                  <li>
+                    {/* <a className="dropdown-item" href="/services/outdoor-furniture"
+                      >OUTDOOR FURNITURE</a
+                    > */}
+                    <p
+                      className="dropdown-item"
+                      onClick={() =>
+                        history.push('/services/outdoor-furniture')
+                      }
+                      style={{ cursor: 'pointer', marginTop: '-10px' }}
+                    >
+                      OUTDOOR FURNITURE
+                    </p>
+                  </li>
+                  <li>
+                    {/* <a className="dropdown-item" href="/services/resturant-patio-design"
+                      >REDTURANT PATIO DESIGN</a
+                    > */}
+                    <p
+                      className="dropdown-item"
+                      onClick={() =>
+                        history.push('/services/restaurant-patio-design')
+                      }
+                      style={{ cursor: 'pointer', marginTop: '-10px' }}
+                    >
+                      RESTAURANT PATIO DESIGN
+                    </p>
+                  </li>
+                </ul>
+              </li>
+              {props.showLoginLogout && props.isLoggedIn && (
+                <li
+                  className="nav-item"
+                  onClick={() => {
+                    sessionStorage.clear();
+                    window.location.reload();
+                  }}
+                >
+                  <button className="btn btn-primary">Logout</button>
                 </li>
               )}
             </ul>
