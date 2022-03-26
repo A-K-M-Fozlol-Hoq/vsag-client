@@ -12,7 +12,6 @@ const Products = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        
         setProducts(data);
       })
       .catch((error) => {
@@ -34,7 +33,6 @@ const Products = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          
           if (data._id) {
             alert('Product created successfully');
             updateLogosState();
@@ -42,6 +40,7 @@ const Products = () => {
         })
         .catch((error) => {
           console.error(error);
+          alert("Failed to create Product. Please don't provide large file");
         });
     } else {
       alert('Please enter a product name and input file');
@@ -56,7 +55,6 @@ const Products = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        
         if (data.message === 'Product was removed successfully!') {
           alert('Product removed successfully');
           updateLogosState();

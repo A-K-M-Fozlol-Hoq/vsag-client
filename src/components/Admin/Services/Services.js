@@ -11,7 +11,6 @@ const Services = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        
         setProducts(data);
       })
       .catch((error) => {
@@ -33,7 +32,6 @@ const Services = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          
           if (data._id) {
             alert('Service created successfully');
             updateLogosState();
@@ -41,6 +39,7 @@ const Services = () => {
         })
         .catch((error) => {
           console.error(error);
+          alert("Failed to create service. Please don't provide large file");
         });
     } else {
       alert('Please enter a Service name, description and input file');
@@ -55,7 +54,6 @@ const Services = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        
         if (data.message === 'Service was removed successfully!') {
           alert('Service removed successfully');
           updateLogosState();

@@ -9,12 +9,11 @@ const Pages = () => {
   const [slug, setSlug] = useState('');
   const [pages, setpages] = useState([]);
   const updateLogosState = () => {
-    fetch( `https://therestaurantpatio.com/api/page/getAll`, {
+    fetch(`https://therestaurantpatio.com/api/page/getAll`, {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        
         setpages(data);
       })
       .catch((error) => {
@@ -26,43 +25,38 @@ const Pages = () => {
   }, []);
   const handleSubmit = () => {
     if (title && slug && article && image) {
-        const formData = new FormData();
-        formData.append('image', image);
-        formData.append('title', title);
-        formData.append('article', article);
-        formData.append('slug', slug);
-        fetch('https://therestaurantpatio.com/api/page/add', {
-            method: 'POST',
-            body: formData,
+      const formData = new FormData();
+      formData.append('image', image);
+      formData.append('title', title);
+      formData.append('article', article);
+      formData.append('slug', slug);
+      fetch('https://therestaurantpatio.com/api/page/add', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data._id) {
+            alert('New page created successfully');
+            window.location.reload();
+          }
         })
-            .then((response) => response.json())
-            .then((data) => {
-            
-            if (data._id) {
-                alert('New page created successfully');
-                window.location.reload();
-            }
-            })
-            .catch((error) => {
-            console.error(error);
-            alert('Failed to create page. Please enter unique slug')
-            });
- 
-        
+        .catch((error) => {
+          console.error(error);
+          alert(
+            "Failed to create page. Please enter unique slug and don't provide large file"
+          );
+        });
     } else {
       alert('Please enter a page title,  slug, description and input file');
     }
   };
   const handleClick = (page) => {
-    fetch(
-      `https://therestaurantpatio.com/api/page/deleteById/${page._id}`,
-      {
-        method: 'DELETE',
-      }
-    )
+    fetch(`https://therestaurantpatio.com/api/page/deleteById/${page._id}`, {
+      method: 'DELETE',
+    })
       .then((response) => response.json())
       .then((data) => {
-        
         if (data.message === 'Page was removed successfully!') {
           alert('Page removed successfully');
           updateLogosState();
@@ -75,9 +69,9 @@ const Pages = () => {
       });
   };
 
-   const goToService = (slug) => {
-        history.push(`/services/${slug}`)
-    }
+  const goToService = (slug) => {
+    history.push(`/services/${slug}`);
+  };
   return (
     <div className="product-wrapper">
       <h2 className="text-center mt-3">Added Pages</h2>
@@ -94,7 +88,15 @@ const Pages = () => {
         {pages.map((page) => (
           <div className="single-product" key={page._id}>
             <img src={`data:image/png;base64,${page.image.img}`} alt="icon" />
-            <button className='btn btn-primary' style={{margin:'-70px 0 0 40px'}} onClick={()=>{goToService(page.slug)}}>See Article</button>
+            <button
+              className="btn btn-primary"
+              style={{ margin: '-70px 0 0 40px' }}
+              onClick={() => {
+                goToService(page.slug);
+              }}
+            >
+              See Article
+            </button>
             <div
               onClick={() => {
                 handleClick(page);
@@ -157,6 +159,5 @@ const Pages = () => {
     </div>
   );
 };
-
 
 export default Pages;

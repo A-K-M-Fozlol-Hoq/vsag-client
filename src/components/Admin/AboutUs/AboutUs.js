@@ -19,7 +19,6 @@ const AboutUs = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          
           if (data.modifiedCount) {
             alert('Founder updated successfully');
             // updateAdminState();
@@ -27,6 +26,8 @@ const AboutUs = () => {
         })
         .catch((error) => {
           console.error(error);
+
+          alert("Failed to update. Please don't provide large file");
         });
     } else {
       alert('Please enter all data');
@@ -38,16 +39,12 @@ const AboutUs = () => {
       formData.append('image', coFounderProfile);
       formData.append('description', coFounderBio);
       formData.append('name', coFounderName);
-      fetch(
-        'https://therestaurantpatio.com/api/coFounder/updateCoFounder',
-        {
-          method: 'POST',
-          body: formData,
-        }
-      )
+      fetch('https://therestaurantpatio.com/api/coFounder/updateCoFounder', {
+        method: 'POST',
+        body: formData,
+      })
         .then((response) => response.json())
         .then((data) => {
-          
           if (data.modifiedCount) {
             alert('Co Founder updated successfully');
             // updateAdminState();
@@ -55,6 +52,7 @@ const AboutUs = () => {
         })
         .catch((error) => {
           console.error(error);
+          alert("Failed to update. Please don't provide large file");
         });
     } else {
       alert('Please enter all data');

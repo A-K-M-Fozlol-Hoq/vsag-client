@@ -11,7 +11,6 @@ const Slider = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        
         setSlides(data);
       })
       .catch((error) => {
@@ -33,7 +32,6 @@ const Slider = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          
           if (data._id) {
             alert('New slide created successfully');
             window.location.reload();
@@ -41,6 +39,7 @@ const Slider = () => {
         })
         .catch((error) => {
           console.error(error);
+          alert("Failed to create slide. Please don't provide large file");
         });
     } else {
       alert('Please enter a slide name, description and input file');
@@ -55,7 +54,6 @@ const Slider = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-        
         if (data.message === 'Slide was removed successfully!') {
           alert('Slide removed successfully');
           updateLogosState();
