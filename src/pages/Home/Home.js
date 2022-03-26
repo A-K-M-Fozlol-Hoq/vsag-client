@@ -6,7 +6,7 @@ import Slider from '../../components/Home/Slider/Slider';
 import Footer from '../../components/Shared/Footer/Footer';
 import NavBar from '../../components/Shared/NavBar/NavBar';
 import { Helmet } from 'react-helmet';
-import './Home.css'
+import './Home.css';
 const Home = () => {
   // style={{ backgroundImage: 'linear-gradient(45deg,#286A2D,#6EAD40)' }}
   return (

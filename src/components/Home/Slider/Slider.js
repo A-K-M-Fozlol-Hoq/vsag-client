@@ -11,11 +11,11 @@ const Slider = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setStatus('loaded')
+        setStatus('loaded');
         setSlides(data);
       })
       .catch((error) => {
-        setStatus('loaded')
+        setStatus('loaded');
         console.error(error);
       });
   };
@@ -24,88 +24,107 @@ const Slider = () => {
   }, []);
   return (
     <>
-      {
-        status ==='loading' ?
+      {status === 'loading' ? (
         <>
-        <div className="spinner-border text-success" style={{marginLeft:'48%', marginTop:'50px', marginBottom:'50px' }} role="status">
-            <span className="sr-only"></span>
-        </div>
-        </>
-        :
-        <div className="slider-wrapper" style={{display:'grid', gridTemplateColumn:'30px 1fr 30px', overflow:'hidden'}}>
-          {/* <a
-              className="carousel-control-prev"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="prev"
-            >
-              <span style={{color:'green', backgroundColor:'#6ead40', borderRadius:'5px'}}
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-            </a> */}
-            <p
-              className="carousel-control-prev"
-              role="button"
-              data-slide="prev"
-            >
-              <span style={{color:'green', backgroundColor:'#6ead40', borderRadius:'5px'}}
-                className="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-            </p>
-            <div className="container">
-        <div 
-            id="carouselExampleControls"
-            className="carousel slide pink-bg"
-            data-ride="carousel"
+          <div
+            className="spinner-border text-success"
+            style={{
+              marginLeft: '48%',
+              marginTop: '50px',
+              marginBottom: '50px',
+            }}
+            role="status"
           >
-            <div className="carousel-inner">
-              {slides.map((slide, i) => (
-                <div
-                  className={`carousel-item ${i === 0 ? 'active' : ''} `}
-                  key={slide._id}
-                >
-                  <div className="row align-items-center">
-                    <div className="col-md-7">
-                      <h1>{slide.title}</h1>
-                      <p>{slide.description}</p>
-                      <button className="see-more-button btn btn-danger" onClick={()=>window.location.replace('calculator')}>
-                        Learn more...
-                      </button>
-                    </div>
-                    <div className="col-md-5">
-                      <img
-                        src={`data:image/png;base64,${slide.image.img}`}
-                        className="d-block w-100"
-                        alt="..."
-                      />
+            <span className="sr-only"></span>
+          </div>
+        </>
+      ) : (
+        <div
+          className="slider-wrapper"
+          style={{
+            display: 'grid',
+            gridTemplateColumn: '30px 1fr 30px',
+          }}
+        >
+          <a
+            className="carousel-control-prev"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="prev"
+            style={{
+              marginTop: '90px',
+            }}
+          >
+            <span
+              style={{
+                color: 'green',
+                backgroundColor: '#6ead40',
+                borderRadius: '5px',
+                marginTop: '-190px',
+              }}
+              className="carousel-control-prev-icon"
+              aria-hidden="true"
+            ></span>
+          </a>
+          <div className="container">
+            <div
+              id="carouselExampleControls"
+              className="carousel slide pink-bg"
+              data-ride="carousel"
+            >
+              <div className="carousel-inner">
+                {slides.map((slide, i) => (
+                  <div
+                    className={`carousel-item ${i === 0 ? 'active' : ''} `}
+                    key={slide._id}
+                  >
+                    <div className="row align-items-center">
+                      <div className="col-md-7">
+                        <h1>{slide.title}</h1>
+                        <p>{slide.description}</p>
+                        <button
+                          className="see-more-button btn btn-danger"
+                          onClick={() => window.location.replace('calculator')}
+                        >
+                          Learn more...
+                        </button>
+                      </div>
+                      <div className="col-md-5">
+                        <img
+                          src={`data:image/png;base64,${slide.image.img}`}
+                          className="d-block w-100"
+                          alt="..."
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-  
-            
-
           </div>
+          <a
+            className="carousel-control-next"
+            href="#carouselExampleControls"
+            role="button"
+            data-slide="next"
+            style={{
+              marginTop: '90px',
+            }}
+          >
+            <span
+              style={{
+                color: 'green',
+                backgroundColor: '#6ead40',
+                borderRadius: '5px',
+                marginTop: '-190px',
+              }}
+              className="carousel-control-next-icon"
+              aria-hidden="true"
+            ></span>
+          </a>
         </div>
-            <a
-              className="carousel-control-next"
-              href="#carouselExampleControls"
-              role="button"
-              data-slide="next"
-            >
-              <span style={{color:'green', backgroundColor:'#6ead40', borderRadius:'5px'}}
-                className="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-            </a>
-        
-      </div>
-      }
+      )}
     </>
-   
   );
 };
 
