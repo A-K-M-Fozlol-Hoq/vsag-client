@@ -51,6 +51,11 @@ const NavBar = (props) => {
                   CONTACT US
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link mx-2" to="/blogs">
+                  BLOGS
+                </Link>
+              </li>
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle mx-2"

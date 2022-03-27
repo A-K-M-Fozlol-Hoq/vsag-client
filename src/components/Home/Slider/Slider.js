@@ -39,10 +39,7 @@ const Slider = () => {
           </div>
         </>
       ) : (
-        <div
-          className="slider-wrapper"
-        >
-
+        <div className="slider-wrapper">
           <div className="container w-100">
             <div
               id="carouselExampleControls"
@@ -57,7 +54,7 @@ const Slider = () => {
                   >
                     <div className="row align-items-center">
                       <div className="col-md-7">
-                        <h1>{slide.title}</h1>
+                        <h2>{slide.title}</h2>
                         <p>{slide.description}</p>
                         <button
                           className="see-more-button btn btn-danger"
@@ -68,6 +65,7 @@ const Slider = () => {
                       </div>
                       <div className="col-md-5">
                         <img
+                          // style={{ border: '3px solid red' }}
                           src={`data:image/png;base64,${slide.image.img}`}
                           className="d-block w-100"
                           alt="..."

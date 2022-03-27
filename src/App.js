@@ -17,7 +17,8 @@ import AudioAndVideo from './pages/AudioAndVideo/AudioAndVideo';
 import OutdoorFurniture from './pages/OutdoorFurniture/OutdoorFurniture';
 import RestaurantPatioDesign from './pages/RestaurantPatioDesign/RestaurantPatioDesign';
 import NotFound from './pages/NotFound/NotFound';
-import Services from './pages/Services/Services';
+import Blogs from './pages/Blogs/Blogs';
+import BlogPage from './pages/BlogPage/BlogPage';
 function App() {
   return (
     <div className="App">
@@ -52,6 +53,7 @@ necessary tools and knowledge for them to complete the rental cycle seamlessly a
               <Route path="/contact-us">
                 <ContactUsPage></ContactUsPage>
               </Route>
+
               <Route path="/admin-page">
                 <AdminPage></AdminPage>
               </Route>
@@ -82,8 +84,11 @@ necessary tools and knowledge for them to complete the rental cycle seamlessly a
               <Route path="/services/restaurant-patio-design">
                 <RestaurantPatioDesign></RestaurantPatioDesign>
               </Route>
-              <Route exact path="/services/:slug">
-                <Services></Services>
+              <Route exact path="/blogs/:slug">
+                <Blogs></Blogs>
+              </Route>
+              <Route path="/blogs">
+                <BlogPage></BlogPage>
               </Route>
               <Route path="*">
                 <NotFound></NotFound>

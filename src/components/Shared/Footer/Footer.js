@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
 import {
   AiFillFacebook,
@@ -6,10 +6,44 @@ import {
   AiFillInstagram,
   AiFillGoogleCircle,
 } from 'react-icons/ai';
-import {useHistory} from "react-router-dom"
+import { useHistory } from 'react-router-dom';
 const Footer = (props) => {
   const history = useHistory();
   const { showLetsStayInTouch } = props;
+  const [email, setEmail] = useState('');
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  const handleClick = () => {
+    let isFieldValid = validateEmail(email);
+    if (email && isFieldValid) {
+      const formData = new FormData();
+      formData.append('name', 'guest user');
+      formData.append('email', email);
+      formData.append('details', 'No description');
+      fetch('https://therestaurantpatio.com/api/contactUs/add', {
+        method: 'POST',
+        body: formData,
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data._id) {
+            alert('Email submitted successfully');
+            window.location.replace('/');
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+          alert('Error occured! please try again!');
+        });
+    } else {
+      alert('Please enter a valid email');
+    }
+  };
   return (
     <div className="footer-wrapper">
       {showLetsStayInTouch && (
@@ -22,9 +56,15 @@ const Footer = (props) => {
               <h3>LET'S STAY IN TOUCH</h3>
               <h6>Get updates on sales, specials and more</h6>
               <div className="footer-button">
-                <input type="email" placeholder="Enter your email" />
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
-              <button className="btn btn-danger">SUBMIT</button>
+              <button className="btn btn-danger" onClick={handleClick}>
+                SUBMIT
+              </button>
             </div>
           </div>
         </div>
@@ -45,17 +85,17 @@ const Footer = (props) => {
                 />
                 <p>
                   <a href="/services/patio-heating" className="text-white">
-                  PATIO HEATING
+                    PATIO HEATING
                   </a>
                 </p>
                 <p>
                   <a href="/services/audio-and-video" className="text-white">
-                  AUDIO AND VIDEO
+                    AUDIO AND VIDEO
                   </a>
                 </p>
                 <p>
                   <a href="/services/outdoor-lighting" className="text-white">
-                  OUTDOOR FURNITURE
+                    OUTDOOR FURNITURE
                   </a>
                 </p>
               </div>
@@ -88,13 +128,26 @@ const Footer = (props) => {
                   //   style="width: 60px; background-color: #7c4dff; height: 2px"
                 />
                 <p>
-                  <i className="fas fa-home mr-3"></i> 5155 Central Park Blvd, Denver, CO. 80238
+                  <i className="fas fa-home mr-3"></i> 5155 Central Park Blvd,
+                  Denver, CO. 80238
                 </p>
                 <p>
-                  <i className="fas fa-envelope mr-3"></i> <a href="mailto:rob@primedb.co" className="text-white text-decoration-none">rob@primedb.co</a>
+                  <i className="fas fa-envelope mr-3"></i>{' '}
+                  <a
+                    href="mailto:rob@primedb.co"
+                    className="text-white text-decoration-none"
+                  >
+                    rob@primedb.co
+                  </a>
                 </p>
                 <p>
-                  <i className="fas fa-phone mr-3"></i> <a href="tel:720-226-2926" className="text-white text-decoration-none">720-226-2926</a>
+                  <i className="fas fa-phone mr-3"></i>{' '}
+                  <a
+                    href="tel:720-226-2926"
+                    className="text-white text-decoration-none"
+                  >
+                    720-226-2926
+                  </a>
                 </p>
                 <p
                   style={{
@@ -121,8 +174,11 @@ const Footer = (props) => {
         </section>
 
         <div className="text-center p-3" style={{ backgroundColor: '#286A2D' }}>
-          <a className="text-white text-decoration-none" href="https://primedb.co">
-          Made with️ ❤️ © 2022 PrimeDB
+          <a
+            className="text-white text-decoration-none"
+            href="https://primedb.co"
+          >
+            Made with️ ❤️ © 2022 PrimeDB
           </a>
         </div>
       </footer>

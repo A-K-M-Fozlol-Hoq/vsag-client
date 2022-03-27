@@ -7,21 +7,21 @@ const Pages = () => {
   const [title, setTitle] = useState('');
   const [article, setArticle] = useState('');
   const [slug, setSlug] = useState('');
-  const [pages, setpages] = useState([]);
-  const updateLogosState = () => {
+  const [pages, setPages] = useState([]);
+  const updatePagesState = () => {
     fetch(`https://therestaurantpatio.com/api/page/getAll`, {
       method: 'GET',
     })
       .then((response) => response.json())
       .then((data) => {
-        setpages(data);
+        setPages(data);
       })
       .catch((error) => {
         console.error(error);
       });
   };
   useEffect(() => {
-    updateLogosState();
+    updatePagesState();
   }, []);
   const handleSubmit = () => {
     if (title && slug && article && image) {
@@ -59,7 +59,7 @@ const Pages = () => {
       .then((data) => {
         if (data.message === 'Page was removed successfully!') {
           alert('Page removed successfully');
-          updateLogosState();
+          updatePagesState();
         }
       })
       .catch((error) => {
@@ -70,7 +70,7 @@ const Pages = () => {
   };
 
   const goToService = (slug) => {
-    history.push(`/services/${slug}`);
+    history.push(`/blogs/${slug}`);
   };
   return (
     <div className="product-wrapper">

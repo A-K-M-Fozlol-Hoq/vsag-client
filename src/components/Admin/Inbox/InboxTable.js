@@ -3,15 +3,11 @@ import React from 'react';
 const InboxTable = (props) => {
   const { messages, setMessageDetails, setShowTable } = props;
   const deleteMessage = (id) => {
-    fetch(
-      `https://therestaurantpatio.com/api/contactUs/deleteById/${id}`,
-      {
-        method: 'DELETE',
-      }
-    )
+    fetch(`https://therestaurantpatio.com/api/contactUs/deleteById/${id}`, {
+      method: 'DELETE',
+    })
       .then((response) => response.json())
       .then((data) => {
-        
         if (data.message === 'form was removed successfully!') {
           alert('Message removed successfully');
           window.location.reload();
@@ -42,7 +38,8 @@ const InboxTable = (props) => {
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 // eslint-disable-next-line no-unused-expressions
-                setMessageDetails(message), setShowTable(false);
+                setMessageDetails(message);
+                setShowTable(false);
               }}
             >
               {message.name.length > 15
@@ -53,7 +50,8 @@ const InboxTable = (props) => {
               style={{ cursor: 'pointer' }}
               onClick={() => {
                 // eslint-disable-next-line no-unused-expressions
-                setMessageDetails(message), setShowTable(false);
+                setMessageDetails(message);
+                setShowTable(false);
               }}
             >
               {message.email.length > 15
