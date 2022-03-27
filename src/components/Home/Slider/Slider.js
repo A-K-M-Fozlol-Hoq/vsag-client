@@ -51,6 +51,7 @@ const Slider = () => {
                   <div
                     className={`carousel-item ${i === 0 ? 'active' : ''} `}
                     key={slide._id}
+                    style={{ marginTop: '20px' }}
                   >
                     <div className="row align-items-center">
                       <div className="col-md-7">
