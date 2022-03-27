@@ -25,18 +25,19 @@ necessary tools and knowledge for them to complete the rental cycle seamlessly a
       </Helmet>
       <NavBar></NavBar>
       <Slider></Slider>
-      <div
+      <h1
         style={{
           color: '#fff',
           textAlign: 'center',
           padding: '30px 0',
           background: '#6EAD40',
+          marginTop: '20px',
         }}
         className="reaturant-and-hospitality-text"
       >
         We Are Restaurant and Hospitality Consulting Experts.
-        <div className="learn-more">Learn more.</div>
-      </div>
+        {/* <div className="learn-more">Learn more.</div> */}
+      </h1>
       <Services></Services>
       <ConsultingServices></ConsultingServices>
       <OurClients></OurClients>

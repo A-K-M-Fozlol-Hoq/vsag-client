@@ -71,7 +71,7 @@ const NavBar = (props) => {
                   className="dropdown-menu"
                   aria-labelledby="navbarScrollingDropdown"
                   style={{
-                    marginLeft: '-50px',
+                    marginLeft: '-60px',
                   }}
                 >
                   <li>
