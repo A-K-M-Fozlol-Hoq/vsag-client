@@ -11,12 +11,11 @@ const CalculatorPage = () => {
         <title>therestaurantpatio</title>
         <meta
           name="description"
-          content="We make the property rental journey simple for Landlords, Tenants and Vendors, by providing the
-necessary tools and knowledge for them to complete the rental cycle seamlessly and efficiently."
+          content="Restaurant Patio Design Services for an Enchanting Outdoor Dining Experience"
         />
         <meta
           name="keywords"
-          content="therestaurantpatio, restaurantpatio, restaurant patio, the restaurant patio"
+          content="Restaurant Patio Design, Restaurant Patio Awnings, Motorized Shades for Restaurants, Audio and Video System for Restaurants"
         />
       </Helmet>
       <NavBar></NavBar>

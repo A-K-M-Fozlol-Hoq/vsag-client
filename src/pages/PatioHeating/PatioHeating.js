@@ -4,9 +4,21 @@ import NavBar from '../../components/Shared/NavBar/NavBar';
 import GoToButton from '../../components/utils/GoToButton/GoToButton';
 import './PatioHeating.css';
 import image from '../image/4.jpeg';
+import Helmet from 'react-helmet';
 const PatioHeating = () => {
   return (
     <div className="pathio-heating-wrapper">
+      <Helmet>
+        <title>RestaurantPatio-Patio Heating</title>
+        <meta
+          name="description"
+          content="Restaurant Patio Design Services for an Enchanting Outdoor Dining Experience"
+        />
+        <meta
+          name="keywords"
+          content="Restaurant Patio Design, Restaurant Patio Awnings, Motorized Shades for Restaurants, Audio and Video System for Restaurants"
+        />
+      </Helmet>
       <NavBar></NavBar>
       <div className="p-5">
         <div className="container">
