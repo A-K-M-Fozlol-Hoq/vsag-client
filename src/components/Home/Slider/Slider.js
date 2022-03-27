@@ -41,35 +41,12 @@ const Slider = () => {
       ) : (
         <div
           className="slider-wrapper"
-          style={{
-            display: 'grid',
-            gridTemplateColumn: '30px 1fr 30px',
-          }}
         >
-          <a
-            className="carousel-control-prev"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="prev"
-            style={{
-              marginTop: '90px',
-            }}
-          >
-            <span
-              style={{
-                color: 'green',
-                backgroundColor: '#6ead40',
-                borderRadius: '5px',
-                marginTop: '-190px',
-              }}
-              className="carousel-control-prev-icon"
-              aria-hidden="true"
-            ></span>
-          </a>
-          <div className="container">
+
+          <div className="container w-100">
             <div
               id="carouselExampleControls"
-              className="carousel slide pink-bg"
+              className="carousel slide pink-bg w-100"
               data-ride="carousel"
             >
               <div className="carousel-inner">
@@ -100,28 +77,30 @@ const Slider = () => {
                   </div>
                 ))}
               </div>
+              <a
+                className="carousel-control-prev"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  className="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+              </a>
+              <a
+                className="carousel-control-next"
+                href="#carouselExampleControls"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  className="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+              </a>
             </div>
           </div>
-          <a
-            className="carousel-control-next"
-            href="#carouselExampleControls"
-            role="button"
-            data-slide="next"
-            style={{
-              marginTop: '90px',
-            }}
-          >
-            <span
-              style={{
-                color: 'green',
-                backgroundColor: '#6ead40',
-                borderRadius: '5px',
-                marginTop: '-190px',
-              }}
-              className="carousel-control-next-icon"
-              aria-hidden="true"
-            ></span>
-          </a>
         </div>
       )}
     </>
