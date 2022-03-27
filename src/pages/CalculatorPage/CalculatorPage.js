@@ -8,7 +8,7 @@ const CalculatorPage = () => {
   return (
     <div>
       <Helmet>
-        <title>therestaurantpatio</title>
+        <title>RestaurantPatio- price</title>
         <meta
           name="description"
           content="Restaurant Patio Design Services for an Enchanting Outdoor Dining Experience"

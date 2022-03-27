@@ -7,7 +7,7 @@ const AboutPage = () => {
   return (
     <div>
       <Helmet>
-        <title>therestaurantpatio</title>
+        <title>RestaurantPatio- About</title>
         <meta
           name="description"
           content="Restaurant Patio Design Services for an Enchanting Outdoor Dining Experience"

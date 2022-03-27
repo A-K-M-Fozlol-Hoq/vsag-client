@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>therestaurantpatio</title>
+        <title>RestaurantPatio-Services in Denver Colorado</title>
         <meta
           name="description"
           content="Restaurant Patio Design Services for an Enchanting Outdoor Dining Experience"

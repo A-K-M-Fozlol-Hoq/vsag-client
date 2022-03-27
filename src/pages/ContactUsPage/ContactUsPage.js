@@ -8,7 +8,7 @@ const ContactUsPage = () => {
   return (
     <div>
       <Helmet>
-        <title>therestaurantpatio</title>
+        <title>RestaurantPatio- Contact Us</title>
         <meta
           name="description"
           content="Restaurant Patio Design Services for an Enchanting Outdoor Dining Experience"
