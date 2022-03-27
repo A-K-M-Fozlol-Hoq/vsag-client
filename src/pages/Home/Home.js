@@ -31,7 +31,6 @@ necessary tools and knowledge for them to complete the rental cycle seamlessly a
           textAlign: 'center',
           padding: '30px 0',
           background: '#6EAD40',
-          marginTop: '20px',
         }}
         className="reaturant-and-hospitality-text"
       >
