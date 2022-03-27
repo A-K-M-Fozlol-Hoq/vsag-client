@@ -11,8 +11,6 @@ const OurClients = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        
-
         setLogos(data);
       })
       .catch((error) => {
@@ -30,7 +28,7 @@ const OurClients = () => {
   return (
     <div className="our-clients-wrapper">
       <div className="container">
-        <h1 className="text-center pt-5 pb-2">OUR CLIENTS</h1>
+        <h2 className="text-center pt-5 pb-2">OUR CLIENTS</h2>
         <div
           style={{
             backgroundColor: '#6EAD40',
